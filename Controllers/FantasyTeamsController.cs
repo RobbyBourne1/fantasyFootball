@@ -15,7 +15,8 @@ namespace fantasyFootball.Controllers
         {
             return View();
         }
-
+        
+        [HttpGet]
         public IActionResult GetTeam()
         {
             var url = "http://api.fantasy.nfl.com/v1/application/login?appKey=sampleapp&timestamp=1268089312&signature=c21bdddc4d4b33f1764c38b9200248d8";
@@ -25,5 +26,4 @@ namespace fantasyFootball.Controllers
             return View();
         }
     }
-
 }
