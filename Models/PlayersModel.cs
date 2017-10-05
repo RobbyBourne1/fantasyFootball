@@ -11,8 +11,8 @@ namespace fantasyFootball.Models
         public FantasyTeamModel FantasyTeamModel { get; set; }
         public string PlayerFirstName { get; set; }
         public string PlayerLastName { get; set; }
-        public PlayerPositionModel Position { get; set; }
-        public string PlayerPositionModel { get => this.PlayerPositionModel.ToString(); }
+        public PlayerPosition Position { get; set; }
+        public string PlayerPosition { get => this.PlayerPosition.ToString(); }
         public string ProfessionalTeamName { get; set; }
         public string Status { get; set; }
         public int PassingYards { get; set; }
