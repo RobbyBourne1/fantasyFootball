@@ -13,6 +13,8 @@ namespace fantasyFootball.Controllers
         public IActionResult Index()
         {
             return View();
+            // 016705457776214443318:swtmrdurlc4 Public URLGet code
+
         }
     }
 }
