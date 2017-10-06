@@ -22,11 +22,10 @@
           <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
           <div class="row">
           <br>
-          <div class="col-sm-6">
-          <button class="btn btn-primary btn-lg btn-block" asp-controller="FantasyTeams" asp-action="GetTeam">Click Here To Import your Team</button>
-          </div>
-          <div class="col-sm-6">
-          <button class="btn btn-primary btn-lg btn-block" asp-controller="FantasyTeams">Click Here To Manually Input Your Team</button>
+          <div class="col-sm-6 col-sm-offset-3">
+          <a asp-controller="InputTeam" asp-action="Index">
+            <button class="btn btn-primary btn-lg btn-block">Click Here To Input your Team</button>
+          </a>
           </div>
           </div>
         </div>

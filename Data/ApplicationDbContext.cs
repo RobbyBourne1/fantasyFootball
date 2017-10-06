@@ -10,6 +10,7 @@ namespace fantasyFootball.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<FantasyTeamModel> FantasyTeams {get;set;}
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
