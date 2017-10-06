@@ -8,7 +8,7 @@ using fantasyFootball.Models;
 
 namespace fantasyFootball.Controllers
 {
-    public class InputTeamController : Controller
+    public class FantasyTeamController : Controller
     {
         public IActionResult Index()
         {
