@@ -1,0 +1,179 @@
+@model IEnumerable<fantasyFootball.Models.PlayersModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerFirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlayerLastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfessionalTeamName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PassingYards)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PassingTDs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PassingInts)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RushingYards)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RushingTDs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Receptions)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReceivingYards)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReceivingTDs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FumblesLost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TwoPtConv)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PointAfterAttempts)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FGMade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sacks)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FumbleRecoveries)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ForcedFumbles)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Safeties)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DefensiveTDs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpecialTeamsTDs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalFantasyPoints)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FantasyTeamModel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfessionalTeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassingYards)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassingTDs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassingInts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RushingYards)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RushingTDs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Receptions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivingYards)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivingTDs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FumblesLost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TwoPtConv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PointAfterAttempts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FGMade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sacks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FumbleRecoveries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ForcedFumbles)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Safeties)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefensiveTDs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialTeamsTDs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalFantasyPoints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FantasyTeamModel.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
