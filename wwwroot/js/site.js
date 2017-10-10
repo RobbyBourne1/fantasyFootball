@@ -27,17 +27,18 @@ playerSearch.addEventListener('input', event =>{
             const defContent = document.createElement('dd')
             displayOfPlayers.textContent = ''
 
-            defContent.textContent += playerData.displayName
+            defTitle.textContent = "Player Name"
+            defContent.textContent = playerData.displayName
 
             displayOfPlayers.appendChild(nameSection)
             nameSection.setAttribute('class', 'playerInfo row')
             nameSection.appendChild(infoSection)
-            infoSection.setAttribute('class', 'dl-horizontal col-sm-12')
             nameSection.appendChild(firstbreak)
             nameSection.appendChild(secondBreak)
             nameSection.appendChild(nameList)
+            nameList.setAttribute('class', 'dl-horizontal col-sm-12')
             nameList.appendChild(defTitle)
-            defTitle.appendChild(defContent)
+            nameList.appendChild(defContent)
             
         }, this);
     });  
