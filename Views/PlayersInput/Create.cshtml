@@ -9,7 +9,7 @@
 <h4>PlayersModel</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -17,123 +17,100 @@
                 <select asp-for="FantasyTeamModelId" class ="form-control" asp-items="ViewBag.FantasyTeamModelId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="PlayerFirstName" class="control-label"></label>
+                <label asp-for="PlayerFirstName" class="control-label">Player Name</label>
                 <input asp-for="PlayerFirstName" class="form-control searchPlayerFn" />
                 <span asp-validation-for="PlayerFirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PlayerLastName" class="control-label"></label>
-                <input asp-for="PlayerLastName" class="form-control" />
+                <input type="hidden" asp-for="PlayerLastName" class="form-control" />
                 <span asp-validation-for="PlayerLastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Position" class="control-label"></label>
-                <select asp-for="Position" class="form-control"></select>
+                <input type="hidden" asp-for="Position" class="form-control"/>
                 <span asp-validation-for="Position" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProfessionalTeamName" class="control-label"></label>
-                <input asp-for="ProfessionalTeamName" class="form-control" />
+                <input type="hidden" asp-for="ProfessionalTeamName" class="form-control" />
                 <span asp-validation-for="ProfessionalTeamName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
+                <input type="hidden" asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PassingYards" class="control-label"></label>
-                <input asp-for="PassingYards" class="form-control" />
+                <input type="hidden" asp-for="PassingYards" class="form-control" />
                 <span asp-validation-for="PassingYards" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PassingTDs" class="control-label"></label>
-                <input asp-for="PassingTDs" class="form-control" />
+                <input type="hidden" asp-for="PassingTDs" class="form-control" />
                 <span asp-validation-for="PassingTDs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PassingInts" class="control-label"></label>
-                <input asp-for="PassingInts" class="form-control" />
+                <input type="hidden" asp-for="PassingInts" class="form-control" />
                 <span asp-validation-for="PassingInts" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RushingYards" class="control-label"></label>
-                <input asp-for="RushingYards" class="form-control" />
+                <input type="hidden" asp-for="RushingYards" class="form-control" />
                 <span asp-validation-for="RushingYards" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RushingTDs" class="control-label"></label>
-                <input asp-for="RushingTDs" class="form-control" />
+                <input type="hidden" asp-for="RushingTDs" class="form-control" />
                 <span asp-validation-for="RushingTDs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Receptions" class="control-label"></label>
-                <input asp-for="Receptions" class="form-control" />
+                <input type="hidden" asp-for="Receptions" class="form-control" />
                 <span asp-validation-for="Receptions" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ReceivingYards" class="control-label"></label>
-                <input asp-for="ReceivingYards" class="form-control" />
+                <input type="hidden" asp-for="ReceivingYards" class="form-control" />
                 <span asp-validation-for="ReceivingYards" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ReceivingTDs" class="control-label"></label>
-                <input asp-for="ReceivingTDs" class="form-control" />
+                <input type="hidden" asp-for="ReceivingTDs" class="form-control" />
                 <span asp-validation-for="ReceivingTDs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FumblesLost" class="control-label"></label>
-                <input asp-for="FumblesLost" class="form-control" />
+                <input type="hidden" asp-for="FumblesLost" class="form-control" />
                 <span asp-validation-for="FumblesLost" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TwoPtConv" class="control-label"></label>
-                <input asp-for="TwoPtConv" class="form-control" />
+                <input type="hidden" asp-for="TwoPtConv" class="form-control" />
                 <span asp-validation-for="TwoPtConv" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PointAfterAttempts" class="control-label"></label>
-                <input asp-for="PointAfterAttempts" class="form-control" />
+                <input type="hidden" asp-for="PointAfterAttempts" class="form-control" />
                 <span asp-validation-for="PointAfterAttempts" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FGMade" class="control-label"></label>
-                <input asp-for="FGMade" class="form-control" />
+                <input type="hidden" asp-for="FGMade" class="form-control" />
                 <span asp-validation-for="FGMade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sacks" class="control-label"></label>
-                <input asp-for="Sacks" class="form-control" />
+                <input type="hidden" asp-for="Sacks" class="form-control" />
                 <span asp-validation-for="Sacks" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FumbleRecoveries" class="control-label"></label>
-                <input asp-for="FumbleRecoveries" class="form-control" />
+                <input type="hidden" asp-for="FumbleRecoveries" class="form-control" />
                 <span asp-validation-for="FumbleRecoveries" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ForcedFumbles" class="control-label"></label>
-                <input asp-for="ForcedFumbles" class="form-control" />
+                <input type="hidden" asp-for="ForcedFumbles" class="form-control" />
                 <span asp-validation-for="ForcedFumbles" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Safeties" class="control-label"></label>
-                <input asp-for="Safeties" class="form-control" />
+                <input type="hidden" asp-for="Safeties" class="form-control" />
                 <span asp-validation-for="Safeties" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DefensiveTDs" class="control-label"></label>
-                <input asp-for="DefensiveTDs" class="form-control" />
+                <input type="hidden" asp-for="DefensiveTDs" class="form-control" />
                 <span asp-validation-for="DefensiveTDs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SpecialTeamsTDs" class="control-label"></label>
-                <input asp-for="SpecialTeamsTDs" class="form-control" />
+                <input type="hidden" asp-for="SpecialTeamsTDs" class="form-control" />
                 <span asp-validation-for="SpecialTeamsTDs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TotalFantasyPoints" class="control-label"></label>
-                <input asp-for="TotalFantasyPoints" class="form-control" />
+                <input type="hidden" asp-for="TotalFantasyPoints" class="form-control" />
                 <span asp-validation-for="TotalFantasyPoints" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -141,8 +118,23 @@
             </div>
         </form>
     </div>
-</div>
-
+    <div class="playerInfo row">
+        <br>
+        <br>
+        <dl class="dl-horizontal col-sm-6">
+            <dt>Player Name</dt>
+            <dd>Tiger Nixon</dd>
+            <br>
+            <dt>Player Team</dt>
+            <dd>Super Flockas</dd>
+        </dl>
+        <dl class="dl-horizontal col-sm-6">
+            <dt>Player Position</dt>
+            <dd>QB</dd>
+            <br>
+        </dl>
+    </div>
+    <hr>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
