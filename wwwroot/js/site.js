@@ -28,7 +28,7 @@ playerSearch.addEventListener('input', event => {
                             <dt>Player Team</dt>
                             <dd>${playerData.team}</dd>
                         </dl>
-                        <button type="button" value="Create" class="btn btn-default col-sm-2 add-button" data-displayName="${playerData.displayName}">Add</button>
+                        <button type="button" value="Create" class="btn btn-default col-sm-2 add-button" data-displayName="${playerData.displayName}" data-position="${playerData.position}" data-team="${playerData.team}" data-fname="${playerData.fname}" data-lname="${playerData.lname}" data-team="${playerData.team}" data-jersey="${playerData.jersey}" data-active="${playerData.active}" data-college="${playerData.college}" data-dob="${playerData.dob}">Add</button>
                       </div>
                     `;
 
@@ -37,7 +37,15 @@ playerSearch.addEventListener('input', event => {
                 button.addEventListener("click", (e) => {
                     console.log(e.target);
                     const data = {
-                        displayName : e.target.getAttribute("data-displayName")
+                        displayName : e.target.getAttribute("data-displayName"),
+                        position : e.target.getAttribute("data-position"),
+                        team : e.target.getAttribute("data-team"),
+                        fname : e.target.getAttribute("data-fname"),
+                        lname : e.target.getAttribute("data-lname"),
+                        jersey : e.target.getAttribute("data-jersey"),
+                        active : e.target.getAttribute("data-active"),
+                        college : e.target.getAttribute("data-college"),
+                        dob : e.target.getAttribute("data-dob")
                     }
                     // fetch -- post to the create player route
                     fetch("/PlayersInput/Create/", {
