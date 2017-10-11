@@ -36,12 +36,18 @@ playerSearch.addEventListener('input', event => {
             document.querySelectorAll(".add-button").forEach(button => {
                 button.addEventListener("click", (e) => {
                     console.log(e.target);
+                    const data = {
+                        displayName : e.target.getAttribute("data-displayName")
+                    }
                     // fetch -- post to the create player route
                     fetch("/PlayersInput/Create/", {
                         method: "POST",
-                        body: data
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
                     }).then(function(res){return res.json()})
-                    .then(()=> console.log("Hi"))
+                    .then((function(data){ alert(json.stringify(data))}))
                 })
             })
         });

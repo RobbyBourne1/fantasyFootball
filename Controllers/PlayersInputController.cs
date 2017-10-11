@@ -48,7 +48,7 @@ namespace fantasyFootball.Controllers
         // GET: PlayersInput/Create
         public IActionResult Create()
         {
-            ViewData["FantasyTeamModelId"] = new SelectList(_context.FantasyTeams, "Id", "Id");
+            ViewData["FantasyTeamModelId"] = new SelectList(_context.FantasyTeams, "Id", "TeamName");
             return View();
         }
 
@@ -56,18 +56,18 @@ namespace fantasyFootball.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FantasyTeamModelId,active,jersey,lname,fname,displayName,team,position,dob,college")] PlayersModel playersModel)
+
+        public async Task<IActionResult> Create([FromBody]PlayersModel playersModel)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(playersModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Ok(playersModel);
             }
-            ViewData["FantasyTeamModelId"] = new SelectList(_context.FantasyTeams, "Id", "Id", playersModel.FantasyTeamModelId);
             return Ok(playersModel);
         }
+
 
         // GET: PlayersInput/Edit/5
         public async Task<IActionResult> Edit(string id)
