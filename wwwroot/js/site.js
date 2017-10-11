@@ -17,11 +17,11 @@ playerSearch.addEventListener('input', event => {
             })
             let displayOfPlayers = document.querySelector('.playerInfo')
             displayOfPlayers.innerHTML = ''
-            playersFound.slice(0, 10).forEach(function (playerData, index) {
+            playersFound.slice(0, 3).forEach(function (playerData, index) {
 
                     displayOfPlayers.innerHTML += `
-                      <div class="playerInfo row">
-                        <dl class="dl-horizontal col-sm-12">
+                      <div class="row col-sm-4">
+                        <dl class="dl-horizontal col-sm-1">
                             <dt>Player Name</dt>
                             <dd>${playerData.displayName}</dd>
                             <dt>Player Position</dt>
@@ -29,6 +29,7 @@ playerSearch.addEventListener('input', event => {
                             <dt>Player Team</dt>
                             <dd>${playerData.team}</dd>
                         </dl>
+                        <button type="submit" value="Create" class="btn btn-default col-sm-1">Add</button>
                       </div>
                     `;
             }, this);
