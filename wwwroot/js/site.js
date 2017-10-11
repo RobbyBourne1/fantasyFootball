@@ -11,7 +11,6 @@ playerSearch.addEventListener('input', event => {
     let playerInfo = fetch(url).then(response => response.json())
         .then(data => {
             console.log(data)
-            console.log(data.Players[5].jersey)
             let playersFound = data.Players.filter(player => {
                 return player.displayName.indexOf(_userInput) >= 0;
             })
@@ -20,8 +19,8 @@ playerSearch.addEventListener('input', event => {
             playersFound.slice(0, 3).forEach(function (playerData, index) {
 
                     displayOfPlayers.innerHTML += `
-                      <div class="row col-sm-4">
-                        <dl class="dl-horizontal col-sm-1">
+                      <div class="col-sm-4">
+                        <dl class="dl-horizontal col-sm-10">
                             <dt>Player Name</dt>
                             <dd>${playerData.displayName}</dd>
                             <dt>Player Position</dt>
@@ -29,10 +28,22 @@ playerSearch.addEventListener('input', event => {
                             <dt>Player Team</dt>
                             <dd>${playerData.team}</dd>
                         </dl>
-                        <button type="submit" value="Create" class="btn btn-default col-sm-1">Add</button>
+                        <button type="button" value="Create" class="btn btn-default col-sm-2 add-button" data-displayName="${playerData.displayName}">Add</button>
                       </div>
                     `;
+
             }, this);
+            document.querySelectorAll(".add-button").forEach(button => {
+                button.addEventListener("click", (e) => {
+                    console.log(e.target);
+                    // fetch -- post to the create player route
+                    fetch("/PlayersInput/Create/", {
+                        method: "POST",
+                        body: data
+                    }).then(function(res){return res.json()})
+                    .then(()=> console.log("Hi"))
+                })
+            })
         });
 });
 
