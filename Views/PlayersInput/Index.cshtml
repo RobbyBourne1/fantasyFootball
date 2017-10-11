@@ -13,76 +13,31 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.PlayerFirstName)
+                    @Html.DisplayNameFor(model => model.active)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PlayerLastName)
+                    @Html.DisplayNameFor(model => model.jersey)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Position)
+                    @Html.DisplayNameFor(model => model.lname)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ProfessionalTeamName)
+                    @Html.DisplayNameFor(model => model.fname)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Status)
+                    @Html.DisplayNameFor(model => model.displayName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PassingYards)
+                    @Html.DisplayNameFor(model => model.team)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PassingTDs)
+                    @Html.DisplayNameFor(model => model.position)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PassingInts)
+                    @Html.DisplayNameFor(model => model.dob)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.RushingYards)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RushingTDs)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Receptions)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ReceivingYards)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ReceivingTDs)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FumblesLost)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TwoPtConv)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PointAfterAttempts)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FGMade)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Sacks)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FumbleRecoveries)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ForcedFumbles)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Safeties)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DefensiveTDs)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SpecialTeamsTDs)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TotalFantasyPoints)
+                    @Html.DisplayNameFor(model => model.college)
                 </th>
             <th>
                 @Html.DisplayNameFor(model => model.FantasyTeamModel)
@@ -94,76 +49,31 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PlayerFirstName)
+                @Html.DisplayFor(modelItem => item.active)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PlayerLastName)
+                @Html.DisplayFor(modelItem => item.jersey)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Position)
+                @Html.DisplayFor(modelItem => item.lname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProfessionalTeamName)
+                @Html.DisplayFor(modelItem => item.fname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @Html.DisplayFor(modelItem => item.displayName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PassingYards)
+                @Html.DisplayFor(modelItem => item.team)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PassingTDs)
+                @Html.DisplayFor(modelItem => item.position)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PassingInts)
+                @Html.DisplayFor(modelItem => item.dob)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RushingYards)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RushingTDs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Receptions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReceivingYards)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReceivingTDs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FumblesLost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TwoPtConv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PointAfterAttempts)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FGMade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sacks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FumbleRecoveries)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ForcedFumbles)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Safeties)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DefensiveTDs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpecialTeamsTDs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalFantasyPoints)
+                @Html.DisplayFor(modelItem => item.college)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FantasyTeamModel.Id)

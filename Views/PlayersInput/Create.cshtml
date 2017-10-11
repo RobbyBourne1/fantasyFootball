@@ -9,7 +9,7 @@
 <h4>PlayersModel</h4>
 <hr />
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -17,112 +17,49 @@
                 <select asp-for="FantasyTeamModelId" class ="form-control" asp-items="ViewBag.FantasyTeamModelId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="PlayerFirstName" class="control-label">Player Name</label>
-                <input asp-for="PlayerFirstName" class="form-control searchPlayerFn" />
-                <span asp-validation-for="PlayerFirstName" class="text-danger"></span>
+                <input type="hidden" asp-for="active" class="form-control" />
+                <span asp-validation-for="active" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="PlayerLastName" class="form-control" />
-                <span asp-validation-for="PlayerLastName" class="text-danger"></span>
+                <input type="hidden" asp-for="jersey" class="form-control" />
+                <span asp-validation-for="jersey" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="Position" class="form-control"/>
-                <span asp-validation-for="Position" class="text-danger"></span>
+                <input type="hidden" asp-for="lname" class="form-control" />
+                <span asp-validation-for="lname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="ProfessionalTeamName" class="form-control" />
-                <span asp-validation-for="ProfessionalTeamName" class="text-danger"></span>
+                <input type="hidden" asp-for="fname" class="form-control" />
+                <span asp-validation-for="fname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
+                <label asp-for="displayName" class="control-label">Player Name</label>
+                <input asp-for="displayName" class="form-control" />
+                <span asp-validation-for="displayName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="PassingYards" class="form-control" />
-                <span asp-validation-for="PassingYards" class="text-danger"></span>
+                <input type="hidden" asp-for="team" class="form-control" />
+                <span asp-validation-for="team" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="PassingTDs" class="form-control" />
-                <span asp-validation-for="PassingTDs" class="text-danger"></span>
+                <input type="hidden" asp-for="position" class="form-control" />
+                <span asp-validation-for="position" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="PassingInts" class="form-control" />
-                <span asp-validation-for="PassingInts" class="text-danger"></span>
+                <input type="hidden" asp-for="dob" class="form-control" />
+                <span asp-validation-for="dob" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="RushingYards" class="form-control" />
-                <span asp-validation-for="RushingYards" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="RushingTDs" class="form-control" />
-                <span asp-validation-for="RushingTDs" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Receptions" class="form-control" />
-                <span asp-validation-for="Receptions" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="ReceivingYards" class="form-control" />
-                <span asp-validation-for="ReceivingYards" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="ReceivingTDs" class="form-control" />
-                <span asp-validation-for="ReceivingTDs" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="FumblesLost" class="form-control" />
-                <span asp-validation-for="FumblesLost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="TwoPtConv" class="form-control" />
-                <span asp-validation-for="TwoPtConv" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="PointAfterAttempts" class="form-control" />
-                <span asp-validation-for="PointAfterAttempts" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="FGMade" class="form-control" />
-                <span asp-validation-for="FGMade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Sacks" class="form-control" />
-                <span asp-validation-for="Sacks" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="FumbleRecoveries" class="form-control" />
-                <span asp-validation-for="FumbleRecoveries" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="ForcedFumbles" class="form-control" />
-                <span asp-validation-for="ForcedFumbles" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Safeties" class="form-control" />
-                <span asp-validation-for="Safeties" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="DefensiveTDs" class="form-control" />
-                <span asp-validation-for="DefensiveTDs" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="SpecialTeamsTDs" class="form-control" />
-                <span asp-validation-for="SpecialTeamsTDs" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="TotalFantasyPoints" class="form-control" />
-                <span asp-validation-for="TotalFantasyPoints" class="text-danger"></span>
+                <input type="hidden" asp-for="college" class="form-control" />
+                <span asp-validation-for="college" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
     </div>
-    <div class="row">
-        <dl class="playerInfo col-sm-12">
-        </dl>
-    </div>
-    <hr>
+</div>
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

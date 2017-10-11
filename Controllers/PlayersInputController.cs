@@ -22,7 +22,7 @@ namespace fantasyFootball.Controllers
         // GET: PlayersInput
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.PlayersModel.Include(p => p.FantasyTeamModel);
+            var applicationDbContext = _context.FantasyPlayers.Include(p => p.FantasyTeamModel);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace fantasyFootball.Controllers
                 return NotFound();
             }
 
-            var playersModel = await _context.PlayersModel
+            var playersModel = await _context.FantasyPlayers
                 .Include(p => p.FantasyTeamModel)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (playersModel == null)
@@ -57,7 +57,7 @@ namespace fantasyFootball.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FantasyTeamModelId,PlayerFirstName,PlayerLastName,Position,ProfessionalTeamName,Status,PassingYards,PassingTDs,PassingInts,RushingYards,RushingTDs,Receptions,ReceivingYards,ReceivingTDs,FumblesLost,TwoPtConv,PointAfterAttempts,FGMade,Sacks,FumbleRecoveries,ForcedFumbles,Safeties,DefensiveTDs,SpecialTeamsTDs,TotalFantasyPoints")] PlayersModel playersModel)
+        public async Task<IActionResult> Create([Bind("Id,FantasyTeamModelId,active,jersey,lname,fname,displayName,team,position,dob,college")] PlayersModel playersModel)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace fantasyFootball.Controllers
                 return NotFound();
             }
 
-            var playersModel = await _context.PlayersModel.SingleOrDefaultAsync(m => m.Id == id);
+            var playersModel = await _context.FantasyPlayers.SingleOrDefaultAsync(m => m.Id == id);
             if (playersModel == null)
             {
                 return NotFound();
@@ -91,7 +91,7 @@ namespace fantasyFootball.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,FantasyTeamModelId,PlayerFirstName,PlayerLastName,Position,ProfessionalTeamName,Status,PassingYards,PassingTDs,PassingInts,RushingYards,RushingTDs,Receptions,ReceivingYards,ReceivingTDs,FumblesLost,TwoPtConv,PointAfterAttempts,FGMade,Sacks,FumbleRecoveries,ForcedFumbles,Safeties,DefensiveTDs,SpecialTeamsTDs,TotalFantasyPoints")] PlayersModel playersModel)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,FantasyTeamModelId,active,jersey,lname,fname,displayName,team,position,dob,college")] PlayersModel playersModel)
         {
             if (id != playersModel.Id)
             {
@@ -130,7 +130,7 @@ namespace fantasyFootball.Controllers
                 return NotFound();
             }
 
-            var playersModel = await _context.PlayersModel
+            var playersModel = await _context.FantasyPlayers
                 .Include(p => p.FantasyTeamModel)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (playersModel == null)
@@ -146,15 +146,15 @@ namespace fantasyFootball.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var playersModel = await _context.PlayersModel.SingleOrDefaultAsync(m => m.Id == id);
-            _context.PlayersModel.Remove(playersModel);
+            var playersModel = await _context.FantasyPlayers.SingleOrDefaultAsync(m => m.Id == id);
+            _context.FantasyPlayers.Remove(playersModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PlayersModelExists(string id)
         {
-            return _context.PlayersModel.Any(e => e.Id == id);
+            return _context.FantasyPlayers.Any(e => e.Id == id);
         }
     }
 }
