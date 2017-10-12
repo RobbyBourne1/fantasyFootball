@@ -20,7 +20,7 @@ playerSearch.addEventListener('input', event => {
             playersFound.slice(0, 3).forEach(function (playerData, index) {
 
                     displayOfPlayers.innerHTML += `
-                      <div class="col-sm-4">
+                      <div class="col-sm-12">
                         <dl class="dl-horizontal col-sm-10">
                             <dt>Player Name</dt>
                             <dd>${playerData.displayName}</dd>
