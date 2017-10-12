@@ -16,12 +16,12 @@ playerSearch.addEventListener('input', event => {
             })
             let displayOfPlayers = document.querySelector('.playerInfo')
             displayOfPlayers.innerHTML = ''
-            playersFound.slice(0, 3).forEach(function (playerData, index) {
+            playersFound.slice(0, 15).forEach(function (playerData, index) {
 
                 if (playerData.active == 0) {
-                    allPlayerBody.innerHTML += ""
+                    displayOfPlayers.innerHTML += ""
                 } else {
-                    allPlayerBody.innerHTML +=`
+                    displayOfPlayers.innerHTML +=`
                       <div class="col-sm-12">
                         <dl class="dl-horizontal col-sm-10">
                             <dt>Player Name</dt>

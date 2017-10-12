@@ -22,7 +22,7 @@ let allPlayerInfo = fetch(url).then(response => response.json())
                 } else {
                     allPlayerBody.innerHTML += `
                     <tr>
-                        <td><a href="/playerinfo/index/${playerData.playerId}">${playerData.displayName}</a></td>
+                        <td><a href="/playerinfo/index/${playerData.playerId}?finitial=${playerData.fname}&lname=${playerData.lname}&team=${playerData.team}&position=${playerData.position}">${playerData.displayName}</a></td>
                         <td>${playerData.position}</td>
                         <td>${playerData.team}</td>
                         <td><a href="/playersinput/create">Add Player</a></td>
