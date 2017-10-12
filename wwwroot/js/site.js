@@ -3,6 +3,7 @@ let playerSearch = document.querySelector('.searchPlayerName')
 let playerForm = document.querySelector('form')
 let input = document.querySelector('input')
 let search = input.value
+let teamSelect = document.querySelector('.teamID')
 let url = "/proxy"
 
 playerSearch.addEventListener('input', event => {
@@ -45,7 +46,8 @@ playerSearch.addEventListener('input', event => {
                         jersey : e.target.getAttribute("data-jersey"),
                         active : e.target.getAttribute("data-active"),
                         college : e.target.getAttribute("data-college"),
-                        dob : e.target.getAttribute("data-dob")
+                        dob : e.target.getAttribute("data-dob"),
+                        FantasyTeamModelId : teamSelect.options[teamSelect.selectedIndex].value,
                     }
                     // fetch -- post to the create player route
                     fetch("/PlayersInput/Create/", {
