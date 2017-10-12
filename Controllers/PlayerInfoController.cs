@@ -10,9 +10,8 @@ namespace fantasyFootball.Controllers
 {
     public class PlayerInfoController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int Id)
         {
-            
             return View();
         }
     }

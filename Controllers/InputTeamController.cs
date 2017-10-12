@@ -66,7 +66,7 @@ namespace fantasyFootball.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id", fantasyTeamModel.ApplicationUserId);
-            return View(fantasyTeamModel);
+            return RedirectToAction("Create", "PlayersInput");
         }
 
         // GET: InputTeam/Edit/5
