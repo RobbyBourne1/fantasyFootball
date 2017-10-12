@@ -47,7 +47,7 @@ playerSearch.addEventListener('input', event => {
                         active : e.target.getAttribute("data-active"),
                         college : e.target.getAttribute("data-college"),
                         dob : e.target.getAttribute("data-dob"),
-                        FantasyTeamModelId : teamSelect.options[teamSelect.selectedIndex].value,
+                        FantasyTeamModelId : teamSelect.options[teamSelect.selectedIndex].value
                     }
                     // fetch -- post to the create player route
                     fetch("/PlayersInput/Create/", {
