@@ -15,18 +15,17 @@ let allPlayerInfo = fetch(url).then(response => response.json())
         })
         let displayOfPlayers = document.querySelector('.allPlayerBody')
             displayOfPlayers.innerHTML = ''
-            playersFound.slice(0, 15).forEach(function (playerData, index) {
+            playersFound.slice(0, 45).forEach(function (playerData, index) {
 
                 if (playerData.active == 0) {
                     allPlayerBody.innerHTML += ""
                 } else {
                     allPlayerBody.innerHTML += `
                     <tr>
-                        <td><a href="/playerinfo">${playerData.displayName}</a></td>
+                        <td><a href="/playerinfo/">${playerData.displayName}</a></td>
                         <td>${playerData.position}</td>
                         <td>${playerData.team}</td>
-                        <td>${playerData.active}</td>
-                        <td>${playerData.college}</td>
+                        <td><a href="/playersinput/create">Add Player</a></td>
                     </tr>
                   `; 
                 }  
