@@ -18,7 +18,10 @@ playerSearch.addEventListener('input', event => {
             displayOfPlayers.innerHTML = ''
             playersFound.slice(0, 3).forEach(function (playerData, index) {
 
-                    displayOfPlayers.innerHTML += `
+                if (playerData.active == 0) {
+                    allPlayerBody.innerHTML += ""
+                } else {
+                    allPlayerBody.innerHTML +=`
                       <div class="col-sm-12">
                         <dl class="dl-horizontal col-sm-10">
                             <dt>Player Name</dt>
@@ -31,7 +34,7 @@ playerSearch.addEventListener('input', event => {
                         <button type="button" value="Create" class="btn btn-default col-sm-2 add-button" data-displayName="${playerData.displayName}" data-position="${playerData.position}" data-team="${playerData.team}" data-fname="${playerData.fname}" data-lname="${playerData.lname}" data-team="${playerData.team}" data-jersey="${playerData.jersey}" data-active="${playerData.active}" data-college="${playerData.college}" data-dob="${playerData.dob}">Add</button>
                       </div>
                     `;
-
+                }
             }, this);
             document.querySelectorAll(".add-button").forEach(button => {
                 button.addEventListener("click", (e) => {
