@@ -20,8 +20,11 @@ namespace fantasyFootball.Models
         public string FumblesLost { get; set; }
         public string SuccessRate { get; set; }
         public string DefDVOA { get; set; }
+        public string DefDVOARank { get; set; }
         public string DefDAVE { get; set; }
         public string DefDAVERank { get; set; }
+        public string DEFPassRank { get; set; }
+        public string DEFRushRank { get; set; }
         public string Passes { get; set; }
         public string CatchRate { get; set; }
         public string FGXPRatio { get; set; }

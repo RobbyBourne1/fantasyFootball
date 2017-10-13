@@ -162,6 +162,37 @@ namespace fantasyFootball.Controllers
                     }
                 }
             }
+            if (position == "def")
+            {
+                Console.WriteLine(position);
+                foreach (var nNode in node.Descendants("tr"))
+                {
+                    if (nNode.NodeType == HtmlNodeType.Element)
+                    {
+                        var _teamNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == team);
+                        Console.WriteLine(_teamNode);
+                        if (_teamNode != null)
+                        {
+                            var insertViewModel = new FootBallOViewModel();
+                                insertViewModel.Position = position;
+                                insertViewModel.DefDVOA = nNode.ChildNodes.ElementAt(5).InnerText;
+                                insertViewModel.DefDVOARank = nNode.ChildNodes.ElementAt(7).InnerText;
+                                insertViewModel.DefDAVE = nNode.ChildNodes.ElementAt(9).InnerText;
+                                insertViewModel.DefDAVERank = nNode.ChildNodes.ElementAt(11).InnerText;
+                                insertViewModel.DEFPassRank = nNode.ChildNodes.ElementAt(15).InnerText;
+                                insertViewModel.DEFRushRank = nNode.ChildNodes.ElementAt(19).InnerText;
+
+                                Console.WriteLine("team is:" + nNode.ChildNodes.ElementAt(3).InnerText);
+
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
+                            }
+                            return View(insertViewModel);
+                        }
+                    }
+                }
+            }
             return View();
         }
     }

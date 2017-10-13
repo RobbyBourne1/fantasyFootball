@@ -63,6 +63,17 @@
                 <th>FGs/XP Ratio</th>
             </tr>
             }
+            @if(Model.Position == "def")
+            {
+             <tr>
+                <th>DEF DVOA</th>
+                <th>DEF DVOA Rank</th>
+                <th>DEF DAVE</th>
+                <th>DEF DAVE Rank</th>
+                <th>DEF Pass Rank</th>
+                <th>DEF Rush Rank</th>
+            </tr>   
+            }
         </thead>
         <tbody>
             @if(Model.Position == "qb")
@@ -159,6 +170,29 @@
                     @Html.DisplayFor(model => model.FGXPRatio)
                 </td>
             </tr>
+            }
+            @if(Model.Position == "def")
+            {
+             <tr>
+                <td>
+                    @Html.DisplayFor(model => model.DefDVOA)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DefDVOARank)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DefDAVE)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DefDAVERank)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DEFPassRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DEFRushRank)
+                </td>
+            </tr>   
             }
         </tbody>
 </table>
