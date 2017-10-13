@@ -56,7 +56,6 @@ namespace fantasyFootball.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-
         public async Task<IActionResult> Create([FromBody]PlayersModel playersModel)
         {
             if (ModelState.IsValid)
@@ -137,6 +136,7 @@ namespace fantasyFootball.Controllers
             {
                 return NotFound();
             }
+
 
             return View(playersModel);
         }

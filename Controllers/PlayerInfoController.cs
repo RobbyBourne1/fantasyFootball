@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using fantasyFootball.Models;
 using HtmlAgilityPack;
 
+
 namespace fantasyFootball.Controllers
 {
     public class PlayerInfoController : Controller
