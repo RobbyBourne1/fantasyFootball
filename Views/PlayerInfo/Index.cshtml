@@ -57,6 +57,12 @@
                 <th>FLs</th>
             </tr>
             }
+            @if(Model.Position == "k")
+            {
+            <tr>
+                <th>FG/XP Ratio</th>
+            </tr>
+            }
         </thead>
         <tbody>
             @if(Model.Position == "qb")
@@ -145,6 +151,14 @@
                     @Html.DisplayFor(model => model.FumblesLost)
                 </td>
             </tr>
+            }
+            @if(Model.Position == "k")
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Position)
+                </td>
+            </tr> 
             }
         </tbody>
 </table>
