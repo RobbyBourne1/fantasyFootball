@@ -6,6 +6,7 @@ namespace fantasyFootball.Models
 {
     public class FootBallOViewModel
     {
+        public string Position { get; set; }
         public string DYAR { get; set; }
         public string DYARRank { get; set; }
         public string QBR { get; set; }
