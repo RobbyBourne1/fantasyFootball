@@ -97,6 +97,39 @@ namespace fantasyFootball.Controllers
                     }
                 }
             }
+            if (position == "wr" || position == "te")
+            {
+                foreach (var nNode in node.Descendants("tr"))
+                {
+                    if (nNode.NodeType == HtmlNodeType.Element)
+                    {
+                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == name);
+                        if (_nameNode != null)
+                        {
+                            var insertViewModel = new FootBallOViewModel();
+                            insertViewModel.Position = position;
+                            insertViewModel.DYAR = nNode.ChildNodes.ElementAt(5).InnerText;
+                            insertViewModel.DYARRank = nNode.ChildNodes.ElementAt(7).InnerText;
+                            insertViewModel.DVOA = nNode.ChildNodes.ElementAt(13).InnerText;
+                            insertViewModel.DVOARank = nNode.ChildNodes.ElementAt(15).InnerText;
+                            insertViewModel.Yards = nNode.ChildNodes.ElementAt(21).InnerText;
+                            insertViewModel.EYards = nNode.ChildNodes.ElementAt(23).InnerText;
+                            insertViewModel.TDs = nNode.ChildNodes.ElementAt(25).InnerText;
+                            insertViewModel.FumblesLost = nNode.ChildNodes.ElementAt(29).InnerText;
+                            insertViewModel.CatchRate = nNode.ChildNodes.ElementAt(27).InnerText;
+                            insertViewModel.Passes = nNode.ChildNodes.ElementAt(19).InnerText;
+
+                            Console.WriteLine("team is:" + nNode.ChildNodes.ElementAt(3).InnerText);
+
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
+                            }
+                            return View(insertViewModel);
+                        }
+                    }
+                }
+            }
             return View();
         }
     }

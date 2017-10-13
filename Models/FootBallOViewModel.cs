@@ -22,5 +22,7 @@ namespace fantasyFootball.Models
         public string DefDVOA { get; set; }
         public string DefDAVE { get; set; }
         public string DefDAVERank { get; set; }
+        public string Passes { get; set; }
+        public string CatchRate { get; set; }
     }
 }
