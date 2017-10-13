@@ -31,6 +31,10 @@ namespace fantasyFootball.Controllers
             {
                 url = $"http://www.footballoutsiders.com/stats/{pos}";
             }
+
+            Console.WriteLine(url);
+            Console.WriteLine(position);
+            Console.WriteLine(team);
             var web = new HtmlWeb();
             var doc = web.Load(url);
             var node = doc.DocumentNode.SelectSingleNode("//table");
@@ -132,29 +136,22 @@ namespace fantasyFootball.Controllers
                     }
                 }
             }
-            if (position == "def")
+            if (position == "k")
             {
+                Console.WriteLine(position);
                 foreach (var nNode in node.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
-                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == name);
-                        if (_nameNode != null)
+                        var _teamNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == team);
+                        Console.WriteLine(_teamNode);
+                        if (_teamNode != null)
                         {
                             var insertViewModel = new FootBallOViewModel();
-                            insertViewModel.Position = position;
-                            // insertViewModel.DYAR = nNode.ChildNodes.ElementAt(5).InnerText;
-                            // // insertViewModel.DYARRank = nNode.ChildNodes.ElementAt(7).InnerText;
-                            // // insertViewModel.DVOA = nNode.ChildNodes.ElementAt(13).InnerText;
-                            // // insertViewModel.DVOARank = nNode.ChildNodes.ElementAt(15).InnerText;
-                            // // insertViewModel.Yards = nNode.ChildNodes.ElementAt(21).InnerText;
-                            // // insertViewModel.EYards = nNode.ChildNodes.ElementAt(23).InnerText;
-                            // // insertViewModel.TDs = nNode.ChildNodes.ElementAt(25).InnerText;
-                            // // insertViewModel.FumblesLost = nNode.ChildNodes.ElementAt(29).InnerText;
-                            // // insertViewModel.CatchRate = nNode.ChildNodes.ElementAt(27).InnerText;
-                            // // insertViewModel.Passes = nNode.ChildNodes.ElementAt(19).InnerText;
+                                insertViewModel.Position = position;
+                                insertViewModel.FGXPRatio = nNode.ChildNodes.ElementAt(13).InnerText;
 
-                            Console.WriteLine("team is:" + nNode.ChildNodes.ElementAt(3).InnerText);
+                                Console.WriteLine("team is:" + nNode.ChildNodes.ElementAt(3).InnerText);
 
                             for (var i = 0; i < nNode.ChildNodes.Count(); i++)
                             {

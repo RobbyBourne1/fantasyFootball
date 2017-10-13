@@ -24,5 +24,6 @@ namespace fantasyFootball.Models
         public string DefDAVERank { get; set; }
         public string Passes { get; set; }
         public string CatchRate { get; set; }
+        public string FGXPRatio { get; set; }
     }
 }

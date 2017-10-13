@@ -57,10 +57,10 @@
                 <th>FLs</th>
             </tr>
             }
-            @if(Model.Position == "def")
+            @if(Model.Position == "k")
             {
             <tr>
-                <th>FG/XP Ratio</th>
+                <th>FGs/XP Ratio</th>
             </tr>
             }
         </thead>
@@ -152,12 +152,13 @@
                 </td>
             </tr>
             }
-            @if(Model.Position == "def")
+            @if(Model.Position == "k")
             {
             <tr>
                 <td>
+                    @Html.DisplayFor(model => model.FGXPRatio)
                 </td>
-            </tr> 
+            </tr>
             }
         </tbody>
 </table>
