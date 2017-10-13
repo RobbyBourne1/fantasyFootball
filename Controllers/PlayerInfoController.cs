@@ -31,7 +31,6 @@ namespace fantasyFootball.Controllers
             {
                 url = $"http://www.footballoutsiders.com/stats/{pos}";
             }
-
             var web = new HtmlWeb();
             var doc = web.Load(url);
             var node = doc.DocumentNode.SelectSingleNode("//table");
@@ -133,7 +132,7 @@ namespace fantasyFootball.Controllers
                     }
                 }
             }
-            if (position == "k")
+            if (position == "def")
             {
                 foreach (var nNode in node.Descendants("tr"))
                 {
