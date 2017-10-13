@@ -6,20 +6,20 @@ namespace fantasyFootball.Models
 {
     public class FootBallOViewModel
     {
-        public int DYAR { get; set; }
-        public int DYARRank { get; set; }
-        public int QBR { get; set; }
-        public int QBRRank { get; set; }
-        public int DVOA { get; set; }
-        public int DVOARank { get; set; }
-        public int Yards { get; set; }
-        public int EYards { get; set; }
-        public int TDs { get; set; }
-        public int INTs { get; set; }
-        public int FLs { get; set; }
-        public int SuccessRate { get; set; }
-        public int DefDVOA { get; set; }
-        public int DefDAVE { get; set; }
-        public int DefDAVERank { get; set; }
+        public string DYAR { get; set; }
+        public string DYARRank { get; set; }
+        public string QBR { get; set; }
+        public string QBRRank { get; set; }
+        public string DVOA { get; set; }
+        public string DVOARank { get; set; }
+        public string Yards { get; set; }
+        public string EYards { get; set; }
+        public string TDs { get; set; }
+        public string INTs { get; set; }
+        public string FumblesLost { get; set; }
+        public string SuccessRate { get; set; }
+        public string DefDVOA { get; set; }
+        public string DefDAVE { get; set; }
+        public string DefDAVERank { get; set; }
     }
 }

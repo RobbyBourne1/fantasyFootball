@@ -1,4 +1,4 @@
-@model IEnumerable<videoStore.Models.FootBallOViewModel>
+@model fantasyFootball.Models.FootBallOViewModel
 
 <div class="container">
     <br>
@@ -19,22 +19,46 @@
         <caption class=""><strong>Fantasy Outsiders Stats</strong></caption>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>DYAR</th>
+                <th>DYAR Rank</th>
+                <th>QBR</th>
+                <th>QBR Rank</th>
+                <th>Yards</th>
+                <th>Effective Yards</th>
+                <th>TDs</th>
+                <th>INTs</th>
+                <th>FLs</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><a asp-area="" asp-controller="PlayerInfo" asp-action="Index">Tiger Nixon</a></td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
+                <td>
+                    @Html.DisplayFor(model => model.DYAR)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DYARRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.QBR)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.QBRRank)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Yards)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.EYards)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.TDs)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.INTs)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.FumblesLost)
+                </td>
             </tr>
         </tbody>
 </table>
