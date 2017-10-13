@@ -14,8 +14,6 @@ namespace fantasyFootball.Controllers
     {
         public IActionResult Index(int Id, [FromQuery]string finitial, [FromQuery]string lname, [FromQuery]string team, [FromQuery]string position)
         {
-            finitial = finitial.First().ToString();
-            var name = $"{finitial}.{lname}";
             position = position.ToLower().ToString();
             var pos = position;
             var url = $"http://www.footballoutsiders.com/stats/";
@@ -41,7 +39,9 @@ namespace fantasyFootball.Controllers
             var node = doc.DocumentNode.SelectSingleNode("//table");
 
             if (position == "qb")
-            {
+            {   
+                finitial = finitial.First().ToString();
+                var name = $"{finitial}.{lname}";
                 foreach (var nNode in node.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
@@ -76,6 +76,8 @@ namespace fantasyFootball.Controllers
             }
             if (position == "rb")
             {
+                finitial = finitial.First().ToString();
+                var name = $"{finitial}.{lname}";
                 foreach (var nNode in node.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
@@ -105,7 +107,9 @@ namespace fantasyFootball.Controllers
                 }
             }
             if (position == "wr" || position == "te")
-            {
+            {   
+                finitial = finitial.First().ToString();
+                var name = $"{finitial}.{lname}";
                 foreach (var nNode in node.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
@@ -194,6 +198,35 @@ namespace fantasyFootball.Controllers
                     }
                 }
             }
+
+// Here is were I'll Bring in Fantasy Pros Stats
+       
+        var FOName = $"{finitial.ToString()} {lname.ToString()}";
+        Console.WriteLine(FOName);
+        var FOurl = $"https://www.fantasypros.com/nfl/projections/{pos}.php";
+        var FOweb = new HtmlWeb();
+        var FOdoc = FOweb.Load(FOurl);
+        var FOnode = FOdoc.DocumentNode.SelectSingleNode("//table");
+        Console.WriteLine(FOurl);
+
+        if (position == "qb")
+            {
+                foreach (var nNode in FOnode.Descendants("tr"))
+                {
+                    if (nNode.NodeType == HtmlNodeType.Element)
+                    {
+                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == FOName);
+                        if (_nameNode != null)
+                        {
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
+                            }
+                        }
+                    }
+                }
+            }
+
             return View();
         }
     }
