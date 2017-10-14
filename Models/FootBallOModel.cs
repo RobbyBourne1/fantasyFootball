@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace fantasyFootball.Models
 {
-    public class FootBallOViewModel
+    public class FootBallOModel
     {
         public string Position { get; set; }
         public string DYAR { get; set; }
