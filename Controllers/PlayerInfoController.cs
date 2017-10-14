@@ -31,9 +31,31 @@ namespace fantasyFootball.Controllers
                 url = $"http://www.footballoutsiders.com/stats/{pos}";
             }
 
-            Console.WriteLine(url);
-            Console.WriteLine(position);
-            Console.WriteLine(team);
+            var FPName = $"{finitial.ToString()} {lname.ToString()} {team.ToString()}";
+            var FPurl = $"https://www.fantasypros.com/nfl/projections/{pos}.php";
+            var FPweb = new HtmlWeb();
+            var FPdoc = FPweb.Load(FPurl);
+            var FPnode = FPdoc.DocumentNode.SelectSingleNode("//table/tbody");
+            
+            // Console.WriteLine(FOnode.OuterHtml);
+
+            foreach (var nNode in FPnode.Descendants("tr"))
+            {
+            if (nNode.NodeType == HtmlNodeType.Element)
+                {
+                    
+                        var findName = nNode.ChildNodes.Where(w => w.InnerText == FPName).Select(s => s.InnerText).FirstOrDefault();
+                        if (findName != null)
+                        {
+                          Console.WriteLine(nNode.ChildNodes[0].InnerText);  
+                        }
+                    // I want it to get the inner text of a and match to FP Name. 
+                }
+            }
+
+            // Console.WriteLine(url);
+            // Console.WriteLine(position);
+            // Console.WriteLine(team);
             var web = new HtmlWeb();
             var doc = web.Load(url);
             var node = doc.DocumentNode.SelectSingleNode("//table");
@@ -65,14 +87,14 @@ namespace fantasyFootball.Controllers
                             
                             Console.WriteLine("team is:" + nNode.ChildNodes.ElementAt(3).InnerText);
 
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
-                            }
+                            // for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            // {
+                            //     Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
+                            // }
                             return View(insertViewModel);
                         }
                     }
-                }
+                }                
             }
             if (position == "rb")
             {
@@ -198,34 +220,7 @@ namespace fantasyFootball.Controllers
                     }
                 }
             }
-
 // Here is were I'll Bring in Fantasy Pros Stats
-       
-        var FOName = $"{finitial.ToString()} {lname.ToString()}";
-        Console.WriteLine(FOName);
-        var FOurl = $"https://www.fantasypros.com/nfl/projections/{pos}.php";
-        var FOweb = new HtmlWeb();
-        var FOdoc = FOweb.Load(FOurl);
-        var FOnode = FOdoc.DocumentNode.SelectSingleNode("//table");
-        Console.WriteLine(FOurl);
-
-        if (position == "qb")
-            {
-                foreach (var nNode in FOnode.Descendants("tr"))
-                {
-                    if (nNode.NodeType == HtmlNodeType.Element)
-                    {
-                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == FOName);
-                        if (_nameNode != null)
-                        {
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
-                            }
-                        }
-                    }
-                }
-            }
 
             return View();
         }
