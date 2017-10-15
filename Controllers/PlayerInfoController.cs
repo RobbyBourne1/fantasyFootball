@@ -48,69 +48,81 @@ namespace fantasyFootball.Controllers
 
             if (position == "qb")
             {
+                var myviewmodel = new PlayerInfoViewModel();
 
-                foreach (var nNode in FPnode.Descendants("tr"))
-                {
-                    if (nNode.NodeType == HtmlNodeType.Element)
-                    {
-                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText.Replace(" ", "") == FPName);
-                        if (_nameNode != null)
-                        {   
-                            var FPinsertViewModel = new PlayerInfoViewModel();
-                            FPinsertViewModel.PassAtt = nNode.ChildNodes.ElementAt(2).InnerText;
-                            FPinsertViewModel.PassCMP = nNode.ChildNodes.ElementAt(4).InnerText;
-                            FPinsertViewModel.PassYards = nNode.ChildNodes.ElementAt(6).InnerText;
-                            FPinsertViewModel.PassINTs = nNode.ChildNodes.ElementAt(8).InnerText;
-                            FPinsertViewModel.PassTDs = nNode.ChildNodes.ElementAt(10).InnerText;
-                            FPinsertViewModel.RushAtt = nNode.ChildNodes.ElementAt(12).InnerText;
-                            FPinsertViewModel.RushYards = nNode.ChildNodes.ElementAt(14).InnerText;
-                            FPinsertViewModel.RushTDs = nNode.ChildNodes.ElementAt(16).InnerText;
-                            FPinsertViewModel.FumblesLost = nNode.ChildNodes.ElementAt(18).InnerText;
-                            FPinsertViewModel.FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText;
-
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
-                            }
-                        }
-                    }
-                    return FPinsertViewModel;
-                }
-                finitial = finitial.First().ToString();
-                var name = $"{finitial}.{lname}";
-                {
-                    foreach (var nNode in node.Descendants("tr"))
+                    foreach (var nNode in FPnode.Descendants("tr"))
                     {
                         if (nNode.NodeType == HtmlNodeType.Element)
                         {
-                            var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == name);
+                            var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText.Replace(" ", "") == FPName);
                             if (_nameNode != null)
                             {
-                                var FOinsertViewModel = new PlayerInfoViewModel();
-                                FOinsertViewModel.Position = position;
-                                FOinsertViewModel.DYAR = nNode.ChildNodes.ElementAt(5).InnerText;
-                                FOinsertViewModel.DYARRank = nNode.ChildNodes.ElementAt(7).InnerText;
-                                FOinsertViewModel.DVOA = nNode.ChildNodes.ElementAt(13).InnerText;
-                                FOinsertViewModel.DVOARank = nNode.ChildNodes.ElementAt(15).InnerText;
-                                FOinsertViewModel.QBR = nNode.ChildNodes.ElementAt(19).InnerText;
-                                FOinsertViewModel.QBRRank = nNode.ChildNodes.ElementAt(21).InnerText;
-                                FOinsertViewModel.Yards = nNode.ChildNodes.ElementAt(25).InnerText;
-                                FOinsertViewModel.EYards = nNode.ChildNodes.ElementAt(27).InnerText;
-                                FOinsertViewModel.TDs = nNode.ChildNodes.ElementAt(29).InnerText;
-                                FOinsertViewModel.FumblesLost = nNode.ChildNodes.ElementAt(33).InnerText;
-                                FOinsertViewModel.INTs = nNode.ChildNodes.ElementAt(35).InnerText;
+                                myviewmodel.FantasyPros = new List<FantasyProsModel>();
+                                myviewmodel.FantasyPros.Add(new FantasyProsModel
+                                {
+                                    PassCMP = nNode.ChildNodes.ElementAt(4).InnerText,
+                                    PassYards = nNode.ChildNodes.ElementAt(6).InnerText,
+                                    PassAtt = nNode.ChildNodes.ElementAt(2).InnerText,
+                                    PassINTs = nNode.ChildNodes.ElementAt(8).InnerText,
+                                    PassTDs = nNode.ChildNodes.ElementAt(10).InnerText,
+                                    RushAtt = nNode.ChildNodes.ElementAt(12).InnerText,
+                                    RushYards = nNode.ChildNodes.ElementAt(14).InnerText,
+                                    FumblesLost = nNode.ChildNodes.ElementAt(18).InnerText,
+                                    FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
+                                });
 
-                                Console.WriteLine("team is:" + nNode.ChildNodes.ElementAt(3).InnerText);
-
-                                // for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                                // {
-                                //     Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
-                                // }
+                                for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                                {
+                                    Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
+                                }
+                                
+                                // return View(myviewmodel);
                             }
                         }
-                        return FOinsertViewModel;
+                    }
+                
+
+                foreach (var nNode in node.Descendants("tr"))
+                {
+                    finitial = finitial.First().ToString();
+                    var name = $"{finitial}.{lname}";
+                    if (nNode.NodeType == HtmlNodeType.Element)
+                    {
+                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == name);
+                        if (_nameNode != null)
+                        {
+
+                            myviewmodel.FootBallO = new List<FootBallOModel>();
+                            myviewmodel.FootBallO.Add(new FootBallOModel
+                            {
+                                Position = position,
+                                DYAR = nNode.ChildNodes.ElementAt(5).InnerText,
+                                DYARRank = nNode.ChildNodes.ElementAt(7).InnerText,
+                                DVOA = nNode.ChildNodes.ElementAt(13).InnerText,
+                                DVOARank = nNode.ChildNodes.ElementAt(15).InnerText,
+                                QBR = nNode.ChildNodes.ElementAt(19).InnerText,
+                                QBRRank = nNode.ChildNodes.ElementAt(21).InnerText,
+                                Yards = nNode.ChildNodes.ElementAt(25).InnerText,
+                                EYards = nNode.ChildNodes.ElementAt(27).InnerText,
+                                TDs = nNode.ChildNodes.ElementAt(29).InnerText,
+                                FumblesLost = nNode.ChildNodes.ElementAt(33).InnerText,
+                                INTs = nNode.ChildNodes.ElementAt(35).InnerText,
+
+                            });
+
+
+                            Console.WriteLine("team is:" + nNode.ChildNodes.ElementAt(3).InnerText);
+
+                            // for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            // {
+                            //     Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
+                            // }
+                            Console.WriteLine(myviewmodel.FootBallO.position);
+                            return View(myviewmodel);
+                        }
                     }
                 }
+                
             }
             if (position == "rb")
             {

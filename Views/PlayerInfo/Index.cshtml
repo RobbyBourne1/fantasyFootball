@@ -18,7 +18,7 @@
 <table id="example" class="table table-striped table-bordered col-sm-10" cellspacing="0" width="100%">
         <caption class=""><strong>Fantasy Outsiders Stats</strong></caption>
         <thead>
-            @if(Model.Position == "qb")
+            @if(Model.FootBallO.Position == "qb")
             {
             <tr>
                 <th>DYAR</th>
@@ -32,7 +32,7 @@
                 <th>FLs</th>
             </tr>
             }
-            @if(Model.Position == "rb")
+            @if(Model.FootBallO.Position == "rb")
             {
             <tr>
                 <th>DYAR</th>
@@ -44,7 +44,7 @@
                 <th>FLs</th>
             </tr>
             }
-            @if(Model.Position == "wr" || Model.Position == "te")
+            @if(Model.FootBallO.Position == "wr" || Model.FootBallO.Position == "te")
             {
             <tr>
                 <th>DYAR</th>
@@ -57,13 +57,13 @@
                 <th>FLs</th>
             </tr>
             }
-            @if(Model.Position == "k")
+            @if(Model.FootBallO.Position == "k")
             {
             <tr>
                 <th>FGs/XP Ratio</th>
             </tr>
             }
-            @if(Model.Position == "def")
+            @if(Model.FootBallO.Position == "def")
             {
              <tr>
                 <th>DEF DVOA</th>
@@ -76,39 +76,39 @@
             }
         </thead>
         <tbody>
-            @if(Model.Position == "qb")
+            @if(Model.FootBallO.Position == "qb")
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.DYAR)
+                    @Html.DisplayFor(model => model.FootBallO.DYAR)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.DYARRank)
+                    @Html.DisplayFor(model => model.FootBallO.DYARRank)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.QBR)
+                    @Html.DisplayFor(model => model.FootBallO.QBR)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.QBRRank)
+                    @Html.DisplayFor(model => model.FootBallO.QBRRank)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.Yards)
+                    @Html.DisplayFor(model => model.FootBallO.Yards)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.EYards)
+                    @Html.DisplayFor(model => model.FootBallO.EYards)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.TDs)
+                    @Html.DisplayFor(model => model.FootBallO.TDs)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.INTs)
+                    @Html.DisplayFor(model => model.FootBallO.INTs)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FumblesLost)
+                    @Html.DisplayFor(model => model.FootBallO.FumblesLost)
                 </td>
             </tr>
             }
-            @if(Model.Position == "rb")
+            @if(Model.FootBallO.Position == "rb")
             {
             <tr>
                 <td>
@@ -134,7 +134,7 @@
                 </td>
             </tr>
             }
-            @if(Model.Position == "wr" || Model.Position == "te")
+            @if(Model.FootBallO.Position == "wr" || Model.FootBallO.Position == "te")
             {
             <tr>
                 <td>
@@ -163,7 +163,7 @@
                 </td>
             </tr>
             }
-            @if(Model.Position == "k")
+            @if(Model.FootBallO.Position == "k")
             {
             <tr>
                 <td>
@@ -171,7 +171,7 @@
                 </td>
             </tr>
             }
-            @if(Model.Position == "def")
+            @if(Model.FootBallO.Position == "def")
             {
              <tr>
                 <td>
