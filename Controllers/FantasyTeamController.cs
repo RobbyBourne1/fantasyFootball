@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using fantasyFootball.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using fantasyFootball.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace fantasyFootball.Controllers
 {
@@ -19,6 +20,7 @@ namespace fantasyFootball.Controllers
         {
             _context = context;
         }
+        [Authorize]
         public IActionResult Index()
         {
             new SelectList(_context.FantasyTeams, "Id", "TeamName");

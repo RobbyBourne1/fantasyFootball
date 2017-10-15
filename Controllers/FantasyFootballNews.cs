@@ -5,15 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using fantasyFootball.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace fantasyFootball.Controllers
 {
     public class FantasyFootballNewsController : Controller
     {
+        [Authorize]
         public IActionResult Index()
         {
             return View();
-            // 016705457776214443318:swtmrdurlc4 Public URLGet code
 
         }
     }

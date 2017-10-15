@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using fantasyFootball.Models;
 using HtmlAgilityPack;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace fantasyFootball.Controllers
 {
+    [Authorize]
     public class PlayerInfoController : Controller
     {
         public IActionResult Index(int Id, [FromQuery]string finitial, [FromQuery]string lname, [FromQuery]string team, [FromQuery]string position)
@@ -346,7 +347,3 @@ namespace fantasyFootball.Controllers
         }
     }
 }
-
-// foreach(var n in nNode.ChildNodes){
-//     Console.WriteLine(n.InnerHtml);
-// }

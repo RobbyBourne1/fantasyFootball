@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using fantasyFootball.Data;
 using fantasyFootball.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace fantasyFootball.Controllers
 {
+    [Authorize]
     public class PlayersInputController : Controller
     {
         private readonly ApplicationDbContext _context;

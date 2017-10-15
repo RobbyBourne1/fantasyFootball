@@ -7,6 +7,8 @@ function getPlayerId() {
     return parts[parts.length - 1];
 }
 
+
+
 fetch(url).then(response => response.json())
     .then(data => {
         console.log(data)
@@ -23,6 +25,9 @@ fetch(url).then(response => response.json())
                 <dd>${playersFound[0].team}</dd>
             `
         let indvPlayerPos = document.querySelector('.indvPlayerPos')
+        if (playersFound[0].active == 1) {
+            playersFound[0].active = "Active"
+        }
         indvPlayerPos.innerHTML = `
                 <dt>Player Position</dt>
                 <dd>${playersFound[0].position}</dd>
