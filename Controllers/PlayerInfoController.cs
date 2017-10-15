@@ -16,22 +16,21 @@ namespace fantasyFootball.Controllers
         {
             position = position.ToLower().ToString();
             var pos = position;
-            var url = $"http://www.footballoutsiders.com/stats/";
+            var FOurl = $"http://www.footballoutsiders.com/stats/{pos}";
 
             if (pos == "k")
             {
-                url = "http://www.footballoutsiders.com/stats/teamst";
+                FOurl = "http://www.footballoutsiders.com/stats/teamst";
 
             }
             else if (pos == "def")
             {
-                url = "http://www.footballoutsiders.com/stats/teamdef";
+                FOurl = "http://www.footballoutsiders.com/stats/teamdef";
+            }
 
-            }
-            else
-            {
-                url = $"http://www.footballoutsiders.com/stats/{pos}";
-            }
+            var FOweb = new HtmlWeb();
+            var FOdoc = FOweb.Load(FOurl);
+            var FOnode = FOdoc.DocumentNode.SelectSingleNode("//table");
 
             var FPName = $"{finitial.ToString()}{lname.ToString()}{team.ToString()}";
             var FPurl = $"https://www.fantasypros.com/nfl/projections/{pos}.php";
@@ -44,13 +43,50 @@ namespace fantasyFootball.Controllers
             var FPdoc = FPweb.Load(FPurl);
             var FPnode = FPdoc.DocumentNode.SelectSingleNode("//table/tbody");
 
-            var web = new HtmlWeb();
-            var doc = web.Load(url);
-            var node = doc.DocumentNode.SelectSingleNode("//table");
+            var FPMurl = $"https://www.fantasypros.com/nfl/matchups/{pos}.php";
+            if (pos == "def")
+            {
+               FPMurl = "https://www.fantasypros.com/nfl/matchups/dst.php";
+            }
+
+            var FPMweb = new HtmlWeb();
+            var FPMdoc = FPMweb.Load(FPMurl);
+            var FPMnode = FPMdoc.DocumentNode.SelectSingleNode("//table");
 
             if (position == "qb")
             {
                 var myviewmodel = new PlayerInfoViewModel();
+                foreach (var nNode in FPMnode.Descendants("tr"))
+                {
+                    if (nNode.NodeType == HtmlNodeType.Element)
+                    {
+                        var _nameNode = nNode.ChildNodes.Select(n => n.InnerText.Replace(" ", "") == FPName);
+                        if (_nameNode != null)
+                        {
+                            myviewmodel.MatchupSchedule = new List<MatchupScheduleModel>();
+                            myviewmodel.MatchupSchedule.Add(new MatchupScheduleModel
+                            {
+                                Position = position,
+                                // PassCMP = nNode.ChildNodes.ElementAt(4).InnerText,
+                                // PassYards = nNode.ChildNodes.ElementAt(6).InnerText,
+                                // PassAtt = nNode.ChildNodes.ElementAt(2).InnerText,
+                                // PassINTs = nNode.ChildNodes.ElementAt(8).InnerText,
+                                // PassTDs = nNode.ChildNodes.ElementAt(10).InnerText,
+                                // RushAtt = nNode.ChildNodes.ElementAt(12).InnerText,
+                                // RushYards = nNode.ChildNodes.ElementAt(14).InnerText,
+                                // RushTDs = nNode.ChildNodes.ElementAt(16).InnerText,
+                                // FumblesLost = nNode.ChildNodes.ElementAt(18).InnerText,
+                                // FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
+                            });
+                            // Code to check Element Placement on Page
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
+                            }
+
+                        }
+                    }
+                }
 
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
@@ -74,16 +110,16 @@ namespace fantasyFootball.Controllers
                                 FumblesLost = nNode.ChildNodes.ElementAt(18).InnerText,
                                 FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
                             });
-
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
-                            }
+                            // Code to check Element Placement on Page
+                            // for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            // {
+                            //     Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
+                            // }
 
                         }
                     }
                 }
-                foreach (var nNode in node.Descendants("tr"))
+                foreach (var nNode in FOnode.Descendants("tr"))
                 {
                     finitial = finitial.First().ToString();
                     var name = $"{finitial}.{lname}";
@@ -146,7 +182,7 @@ namespace fantasyFootball.Controllers
                 }
                 finitial = finitial.First().ToString();
                 var name = $"{finitial}.{lname}";
-                foreach (var nNode in node.Descendants("tr"))
+                foreach (var nNode in FOnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
@@ -220,7 +256,7 @@ namespace fantasyFootball.Controllers
                 }
                 finitial = finitial.First().ToString();
                 var name = $"{finitial}.{lname}";
-                foreach (var nNode in node.Descendants("tr"))
+                foreach (var nNode in FOnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
@@ -268,17 +304,12 @@ namespace fantasyFootball.Controllers
                                 FantasyPoints = nNode.ChildNodes.ElementAt(8).InnerText
                             });
 
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
-                            }
-
                         }
                     }
                 }
-                foreach (var nNode in node.Descendants("tr"))
+                foreach (var nNode in FOnode.Descendants("tr"))
                 {
-                    
+
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
                         var _teamNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == team);
@@ -320,15 +351,10 @@ namespace fantasyFootball.Controllers
                                 FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
                             });
 
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
-                            }
-
                         }
                     }
                 }
-                foreach (var nNode in node.Descendants("tr"))
+                foreach (var nNode in FOnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {

@@ -8,5 +8,6 @@ namespace fantasyFootball.Models
     {
        public List<FantasyProsModel> FantasyPros { get; set; }
        public List<FootBallOModel> FootBallO { get; set; }
+       public List<MatchupScheduleModel> MatchupSchedule{ get; set; }
     }
 }
