@@ -109,7 +109,10 @@ namespace fantasyFootball.Controllers
                                 INTs = nNode.ChildNodes.ElementAt(35).InnerText,
 
                             });
-
+                            foreach (var item in myviewmodel.FootBallO)
+                            {
+                                Console.WriteLine(item.Position);
+                            }
 
                             Console.WriteLine("team is:" + nNode.ChildNodes.ElementAt(3).InnerText);
 
@@ -117,12 +120,12 @@ namespace fantasyFootball.Controllers
                             // {
                             //     Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
                             // }
-                            Console.WriteLine(myviewmodel.FootBallO.position);
-                            return View(myviewmodel);
+                            // Console.WriteLine(myviewmodel.FootBallO.position);
+
                         }
                     }
                 }
-                
+                return View(myviewmodel);
             }
             if (position == "rb")
             {

@@ -18,7 +18,9 @@
 <table id="example" class="table table-striped table-bordered col-sm-10" cellspacing="0" width="100%">
         <caption class=""><strong>Fantasy Outsiders Stats</strong></caption>
         <thead>
-            @if(Model.FootBallO.Position == "qb")
+        @foreach(var item in Model.FootBallO)
+        {
+            @if(item.Position == "qb")
             {
             <tr>
                 <th>DYAR</th>
@@ -32,7 +34,7 @@
                 <th>FLs</th>
             </tr>
             }
-            @if(Model.FootBallO.Position == "rb")
+            @if(item.Position == "rb")
             {
             <tr>
                 <th>DYAR</th>
@@ -44,7 +46,7 @@
                 <th>FLs</th>
             </tr>
             }
-            @if(Model.FootBallO.Position == "wr" || Model.FootBallO.Position == "te")
+            @if(item.Position == "wr" || item.Position == "te")
             {
             <tr>
                 <th>DYAR</th>
@@ -57,13 +59,13 @@
                 <th>FLs</th>
             </tr>
             }
-            @if(Model.FootBallO.Position == "k")
+            @if(item.Position == "k")
             {
             <tr>
                 <th>FGs/XP Ratio</th>
             </tr>
             }
-            @if(Model.FootBallO.Position == "def")
+            @if(item.Position == "def")
             {
              <tr>
                 <th>DEF DVOA</th>
@@ -74,126 +76,130 @@
                 <th>DEF Rush Rank</th>
             </tr>   
             }
+        }
         </thead>
         <tbody>
-            @if(Model.FootBallO.Position == "qb")
+        @foreach(var item in Model.FootBallO)
+        {
+            @if(item.Position == "qb")
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.FootBallO.DYAR)
+                    @Html.DisplayFor(modelItem => item.DYAR)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FootBallO.DYARRank)
+                    @Html.DisplayFor(modelItem => item.DYARRank)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FootBallO.QBR)
+                    @Html.DisplayFor(modelItem => item.QBR)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FootBallO.QBRRank)
+                    @Html.DisplayFor(modelItem => item.QBRRank)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FootBallO.Yards)
+                    @Html.DisplayFor(modelItem => item.Yards)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FootBallO.EYards)
+                    @Html.DisplayFor(modelItem => item.EYards)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FootBallO.TDs)
+                    @Html.DisplayFor(modelItem => item.TDs)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FootBallO.INTs)
+                    @Html.DisplayFor(modelItem => item.INTs)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FootBallO.FumblesLost)
+                    @Html.DisplayFor(modelItem => item.FumblesLost)
                 </td>
             </tr>
             }
-            @if(Model.FootBallO.Position == "rb")
+            @if(item.Position == "rb")
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.DYAR)
+                    @Html.DisplayFor(modelItem => item.DYAR)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.DYARRank)
+                    @Html.DisplayFor(modelItem => item.DYARRank)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.SuccessRate)
+                    @Html.DisplayFor(modelItem => item.SuccessRate)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.Yards)
+                    @Html.DisplayFor(modelItem => item.Yards)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.EYards)
+                    @Html.DisplayFor(modelItem => item.EYards)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.TDs)
+                    @Html.DisplayFor(modelItem => item.TDs)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FumblesLost)
+                    @Html.DisplayFor(modelItem => item.FumblesLost)
                 </td>
             </tr>
             }
-            @if(Model.FootBallO.Position == "wr" || Model.FootBallO.Position == "te")
+            @if(item.Position == "wr" || item.Position == "te")
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.DYAR)
+                    @Html.DisplayFor(modelItem => item.DYAR)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.DYARRank)
+                    @Html.DisplayFor(modelItem => item.DYARRank)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.Passes)
+                    @Html.DisplayFor(modelItem => item.Passes)
                 </td>
                  <td>
-                    @Html.DisplayFor(model => model.CatchRate)
+                    @Html.DisplayFor(modelItem => item.CatchRate)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.Yards)
+                    @Html.DisplayFor(modelItem => item.Yards)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.EYards)
+                    @Html.DisplayFor(modelItem => item.EYards)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.TDs)
+                    @Html.DisplayFor(modelItem => item.TDs)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.FumblesLost)
+                    @Html.DisplayFor(modelItem => item.FumblesLost)
                 </td>
             </tr>
             }
-            @if(Model.FootBallO.Position == "k")
+            @if(item.Position == "k")
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.FGXPRatio)
+                    @Html.DisplayFor(modelItem => item.FGXPRatio)
                 </td>
             </tr>
             }
-            @if(Model.FootBallO.Position == "def")
+            @if(item.Position == "def")
             {
              <tr>
                 <td>
-                    @Html.DisplayFor(model => model.DefDVOA)
+                    @Html.DisplayFor(modelItem => item.DefDVOA)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.DefDVOARank)
+                    @Html.DisplayFor(modelItem => item.DefDVOARank)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.DefDAVE)
+                    @Html.DisplayFor(modelItem => item.DefDAVE)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.DefDAVERank)
+                    @Html.DisplayFor(modelItem => item.DefDAVERank)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.DEFPassRank)
+                    @Html.DisplayFor(modelItem => item.DEFPassRank)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.DEFRushRank)
+                    @Html.DisplayFor(modelItem => item.DEFRushRank)
                 </td>
             </tr>   
             }
+        }
         </tbody>
 </table>
 <table id="example" class="table table-striped table-bordered col-sm-10" cellspacing="0" width="100%">
