@@ -203,26 +203,66 @@
         </tbody>
 </table>
 <table id="example" class="table table-striped table-bordered col-sm-10" cellspacing="0" width="100%">
-        <caption class=""><strong>Fantasy Pros Stats</strong></caption>
+        <caption class=""><strong>Fantasy Pros Projections</strong></caption>
         <thead>
+        @foreach(var item in Model.FantasyPros)
+        {
+            @if(item.Position == "qb")
+            {
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Passing Attempts</th>
+                <th>Completions</th>
+                <th>Passing Yards</th>
+                <th>Passing TDs</th>
+                <th>INTs</th>
+                <th>Rushing Attempts</th>
+                <th>Rushing Yards</th>
+                <th>Rushing TDs</th>
+                <th>FLs</th>
+                <th>Fantasy Points</th>
             </tr>
+            }
+        }
         </thead>
         <tbody>
+        @foreach(var item in Model.FantasyPros)
+        {
+            @if(item.Position == "qb")
+            {
             <tr>
-                <td><a asp-area="" asp-controller="PlayerInfo" asp-action="Index">Tiger Nixon</a></td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassAtt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassCMP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassYards)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassTDs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassINTs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RushAtt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RushYards)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RushTDs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FumblesLost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FantasyPoints)
+                </td>
             </tr>
+            }
+        }
         </tbody>
 </table>
 <table id="example" class="table table-striped table-bordered col-sm-10" cellspacing="0" width="100%">

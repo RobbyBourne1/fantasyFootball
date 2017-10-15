@@ -6,6 +6,7 @@ namespace fantasyFootball.Models
 {
     public class FantasyProsModel
     {
+        public string Position { get; set; }
         public string PassAtt { get; set; }
         public string PassCMP { get; set; }
         public string PassYards { get; set; }

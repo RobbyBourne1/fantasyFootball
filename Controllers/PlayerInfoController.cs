@@ -50,37 +50,38 @@ namespace fantasyFootball.Controllers
             {
                 var myviewmodel = new PlayerInfoViewModel();
 
-                    foreach (var nNode in FPnode.Descendants("tr"))
+                foreach (var nNode in FPnode.Descendants("tr"))
+                {
+                    if (nNode.NodeType == HtmlNodeType.Element)
                     {
-                        if (nNode.NodeType == HtmlNodeType.Element)
+                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText.Replace(" ", "") == FPName);
+                        if (_nameNode != null)
                         {
-                            var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText.Replace(" ", "") == FPName);
-                            if (_nameNode != null)
+                            myviewmodel.FantasyPros = new List<FantasyProsModel>();
+                            myviewmodel.FantasyPros.Add(new FantasyProsModel
                             {
-                                myviewmodel.FantasyPros = new List<FantasyProsModel>();
-                                myviewmodel.FantasyPros.Add(new FantasyProsModel
-                                {
-                                    PassCMP = nNode.ChildNodes.ElementAt(4).InnerText,
-                                    PassYards = nNode.ChildNodes.ElementAt(6).InnerText,
-                                    PassAtt = nNode.ChildNodes.ElementAt(2).InnerText,
-                                    PassINTs = nNode.ChildNodes.ElementAt(8).InnerText,
-                                    PassTDs = nNode.ChildNodes.ElementAt(10).InnerText,
-                                    RushAtt = nNode.ChildNodes.ElementAt(12).InnerText,
-                                    RushYards = nNode.ChildNodes.ElementAt(14).InnerText,
-                                    FumblesLost = nNode.ChildNodes.ElementAt(18).InnerText,
-                                    FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
-                                });
+                                Position = position,
+                                PassCMP = nNode.ChildNodes.ElementAt(4).InnerText,
+                                PassYards = nNode.ChildNodes.ElementAt(6).InnerText,
+                                PassAtt = nNode.ChildNodes.ElementAt(2).InnerText,
+                                PassINTs = nNode.ChildNodes.ElementAt(8).InnerText,
+                                PassTDs = nNode.ChildNodes.ElementAt(10).InnerText,
+                                RushAtt = nNode.ChildNodes.ElementAt(12).InnerText,
+                                RushYards = nNode.ChildNodes.ElementAt(14).InnerText,
+                                RushTDs = nNode.ChildNodes.ElementAt(16).InnerText,
+                                FumblesLost = nNode.ChildNodes.ElementAt(18).InnerText,
+                                FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
+                            });
 
-                                for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                                {
-                                    Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
-                                }
-                                
-                                // return View(myviewmodel);
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
                             }
+
                         }
                     }
-                
+                }
+
 
                 foreach (var nNode in node.Descendants("tr"))
                 {
