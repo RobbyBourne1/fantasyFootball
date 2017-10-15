@@ -24,7 +24,6 @@ namespace fantasyFootball.Models
         public string Sacks { get; set; }
         public string INTs { get; set; }
         public string FRs { get; set; }
-        public string MyProperty { get; set; }
         public string DSTTDs { get; set; }
         public string PointsAllowed { get; set; }
         public string Safetys { get; set; }

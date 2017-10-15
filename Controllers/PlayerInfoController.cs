@@ -35,6 +35,11 @@ namespace fantasyFootball.Controllers
 
             var FPName = $"{finitial.ToString()}{lname.ToString()}{team.ToString()}";
             var FPurl = $"https://www.fantasypros.com/nfl/projections/{pos}.php";
+            if (pos == "def")
+            {
+                FPurl = $"https://www.fantasypros.com/nfl/projections/dst.php";
+            }
+
             var FPweb = new HtmlWeb();
             var FPdoc = FPweb.Load(FPurl);
             var FPnode = FPdoc.DocumentNode.SelectSingleNode("//table/tbody");
@@ -273,6 +278,7 @@ namespace fantasyFootball.Controllers
                 }
                 foreach (var nNode in node.Descendants("tr"))
                 {
+                    
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
                         var _teamNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == team);
@@ -292,34 +298,58 @@ namespace fantasyFootball.Controllers
             }
             if (position == "def")
             {
-                Console.WriteLine(position);
+                Console.WriteLine(FPurl);
+                FPName = $"{finitial}{lname}";
+                var myviewmodel = new PlayerInfoViewModel();
+                foreach (var nNode in FPnode.Descendants("tr"))
+                {
+                    if (nNode.NodeType == HtmlNodeType.Element)
+                    {
+                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText.Replace(" ", "") == FPName);
+                        if (_nameNode != null)
+                        {
+                            myviewmodel.FantasyPros = new List<FantasyProsModel>();
+                            myviewmodel.FantasyPros.Add(new FantasyProsModel
+                            {
+                                Position = position,
+                                Sacks = nNode.ChildNodes.ElementAt(2).InnerText,
+                                INTs = nNode.ChildNodes.ElementAt(4).InnerText,
+                                FRs = nNode.ChildNodes.ElementAt(6).InnerText,
+                                Safetys = nNode.ChildNodes.ElementAt(8).InnerText,
+                                PointsAllowed = nNode.ChildNodes.ElementAt(8).InnerText,
+                                FantasyPoints = nNode.ChildNodes.ElementAt(8).InnerText
+                            });
+
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
+                            }
+
+                        }
+                    }
+                }
                 foreach (var nNode in node.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
                         var _teamNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == team);
-                        Console.WriteLine(_teamNode);
                         if (_teamNode != null)
                         {
-                            var insertViewModel = new FootBallOModel();
-                            insertViewModel.Position = position;
-                            insertViewModel.DefDVOA = nNode.ChildNodes.ElementAt(5).InnerText;
-                            insertViewModel.DefDVOARank = nNode.ChildNodes.ElementAt(7).InnerText;
-                            insertViewModel.DefDAVE = nNode.ChildNodes.ElementAt(9).InnerText;
-                            insertViewModel.DefDAVERank = nNode.ChildNodes.ElementAt(11).InnerText;
-                            insertViewModel.DEFPassRank = nNode.ChildNodes.ElementAt(15).InnerText;
-                            insertViewModel.DEFRushRank = nNode.ChildNodes.ElementAt(19).InnerText;
-
-                            Console.WriteLine("team is:" + nNode.ChildNodes.ElementAt(3).InnerText);
-
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            myviewmodel.FootBallO = new List<FootBallOModel>();
+                            myviewmodel.FootBallO.Add(new FootBallOModel
                             {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerHtml}");
-                            }
-                            return View(insertViewModel);
+                                Position = position,
+                                DefDVOA = nNode.ChildNodes.ElementAt(5).InnerText,
+                                DefDVOARank = nNode.ChildNodes.ElementAt(7).InnerText,
+                                DefDAVE = nNode.ChildNodes.ElementAt(9).InnerText,
+                                DefDAVERank = nNode.ChildNodes.ElementAt(11).InnerText,
+                                DEFPassRank = nNode.ChildNodes.ElementAt(15).InnerText,
+                                DEFRushRank = nNode.ChildNodes.ElementAt(19).InnerText
+                            });
                         }
                     }
                 }
+                return View(myviewmodel);
             }
 
             return View();
