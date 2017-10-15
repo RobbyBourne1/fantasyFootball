@@ -222,6 +222,38 @@
                 <th>Fantasy Points</th>
             </tr>
             }
+            @if(item.Position == "rb" || item.Position == "wr")
+            {
+            <tr>
+                <th>Rushing Attempts</th>
+                <th>Rushing Yards</th>
+                <th>Rushing TDs</th>
+                <th>Receptions</th>
+                <th>Receiving Yards</th>
+                <th>Receiving TDs</th>
+                <th>FLs</th>
+                <th>Fantasy Points</th>
+            </tr>
+            }
+            @if(item.Position == "te")
+            {
+            <tr>
+                <th>Receptions</th>
+                <th>Receiving Yards</th>
+                <th>Receiving TDs</th>
+                <th>FLs</th>
+                <th>Fantasy Points</th>
+            </tr>
+            }
+            @if(item.Position == "k")
+            {
+            <tr>
+                <th>Feild Goals Made</th>
+                <th>Feild Goals Attempted</th>
+                <th>Extra Points Made</th>
+                <th>Fantasy Points</th>
+            </tr>
+            }
         }
         </thead>
         <tbody>
@@ -256,6 +288,72 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FumblesLost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FantasyPoints)
+                </td>
+            </tr>
+            }
+            @if(item.Position == "rb" || item.Position == "wr")
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RushAtt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RushYards)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RushTDs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Receptions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReceivingYards)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReceivingTDs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FumblesLost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FantasyPoints)
+                </td>
+            </tr>
+            }
+            @if(item.Position == "te")
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Receptions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReceivingYards)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReceivingTDs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FumblesLost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FantasyPoints)
+                </td>
+            </tr>
+            }
+            @if(item.Position == "k")
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FGs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FGAttempted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.XPTs)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FantasyPoints)
