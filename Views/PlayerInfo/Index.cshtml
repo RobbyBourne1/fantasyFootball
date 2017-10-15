@@ -254,6 +254,17 @@
                 <th>Fantasy Points</th>
             </tr>
             }
+            @if(item.Position == "def")
+            {
+            <tr>
+                <th>Sacks</th>
+                <th>INTs</th>
+                <th>Fumble Recoveries</th>
+                <th>Safetys</th>
+                <th>Points Allowed</th>
+                <th>Fantasy Points</th>
+            </tr>
+            }
         }
         </thead>
         <tbody>
@@ -354,6 +365,29 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.XPTs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FantasyPoints)
+                </td>
+            </tr>
+            }
+            @if(item.Position == "def")
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sacks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.INTs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FRs)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.Safetys)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PointsAllowed)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FantasyPoints)

@@ -315,9 +315,9 @@ namespace fantasyFootball.Controllers
                                 Sacks = nNode.ChildNodes.ElementAt(2).InnerText,
                                 INTs = nNode.ChildNodes.ElementAt(4).InnerText,
                                 FRs = nNode.ChildNodes.ElementAt(6).InnerText,
-                                Safetys = nNode.ChildNodes.ElementAt(8).InnerText,
-                                PointsAllowed = nNode.ChildNodes.ElementAt(8).InnerText,
-                                FantasyPoints = nNode.ChildNodes.ElementAt(8).InnerText
+                                Safetys = nNode.ChildNodes.ElementAt(14).InnerText,
+                                PointsAllowed = nNode.ChildNodes.ElementAt(16).InnerText,
+                                FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
                             });
 
                             for (var i = 0; i < nNode.ChildNodes.Count(); i++)
