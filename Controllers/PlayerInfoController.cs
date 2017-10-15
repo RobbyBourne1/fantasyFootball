@@ -51,43 +51,12 @@ namespace fantasyFootball.Controllers
 
             var FPMweb = new HtmlWeb();
             var FPMdoc = FPMweb.Load(FPMurl);
-            var FPMnode = FPMdoc.DocumentNode.SelectSingleNode("//table");
+            var FPMnode = FPMdoc.DocumentNode.SelectSingleNode("//tbody");
 
+            var myviewmodel = new PlayerInfoViewModel();
             if (position == "qb")
             {
-                var myviewmodel = new PlayerInfoViewModel();
-                foreach (var nNode in FPMnode.Descendants("tr"))
-                {
-                    if (nNode.NodeType == HtmlNodeType.Element)
-                    {
-                        var _nameNode = nNode.ChildNodes.Select(n => n.InnerText.Replace(" ", "") == FPName);
-                        if (_nameNode != null)
-                        {
-                            myviewmodel.MatchupSchedule = new List<MatchupScheduleModel>();
-                            myviewmodel.MatchupSchedule.Add(new MatchupScheduleModel
-                            {
-                                Position = position,
-                                // PassCMP = nNode.ChildNodes.ElementAt(4).InnerText,
-                                // PassYards = nNode.ChildNodes.ElementAt(6).InnerText,
-                                // PassAtt = nNode.ChildNodes.ElementAt(2).InnerText,
-                                // PassINTs = nNode.ChildNodes.ElementAt(8).InnerText,
-                                // PassTDs = nNode.ChildNodes.ElementAt(10).InnerText,
-                                // RushAtt = nNode.ChildNodes.ElementAt(12).InnerText,
-                                // RushYards = nNode.ChildNodes.ElementAt(14).InnerText,
-                                // RushTDs = nNode.ChildNodes.ElementAt(16).InnerText,
-                                // FumblesLost = nNode.ChildNodes.ElementAt(18).InnerText,
-                                // FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
-                            });
-                            // Code to check Element Placement on Page
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
-                            }
-
-                        }
-                    }
-                }
-
+                
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
@@ -128,7 +97,6 @@ namespace fantasyFootball.Controllers
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == name);
                         if (_nameNode != null)
                         {
-
                             myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
@@ -154,7 +122,6 @@ namespace fantasyFootball.Controllers
             }
             if (position == "rb")
             {
-                var myviewmodel = new PlayerInfoViewModel();
 
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
@@ -210,7 +177,6 @@ namespace fantasyFootball.Controllers
             }
             if (position == "wr" || position == "te")
             {
-                var myviewmodel = new PlayerInfoViewModel();
 
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
@@ -286,7 +252,6 @@ namespace fantasyFootball.Controllers
             }
             if (position == "k")
             {
-                var myviewmodel = new PlayerInfoViewModel();
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
@@ -331,7 +296,6 @@ namespace fantasyFootball.Controllers
             {
                 Console.WriteLine(FPurl);
                 FPName = $"{finitial}{lname}";
-                var myviewmodel = new PlayerInfoViewModel();
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
