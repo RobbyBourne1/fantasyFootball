@@ -20,6 +20,10 @@
         <thead>        
         @foreach(var item in Model.FootBallO)
         {       
+                @if(item.IsNull == "Sorry No Data For this Player")
+                {
+                    <p>No Data For this Player</p>
+                }
                 @if(item.Position == "qb")
                 {
                 <tr>
@@ -81,6 +85,10 @@
         <tbody>
         @foreach(var item in Model.FootBallO)
         {
+            @if(item.IsNull == "Sorry No Data For this Player")
+                {
+                    <p>@Html.DisplayFor(modelItem => item.IsNull)</p>
+                }
             @if(item.Position == "qb")
             {
             <tr>

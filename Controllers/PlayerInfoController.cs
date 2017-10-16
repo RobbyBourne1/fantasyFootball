@@ -91,7 +91,15 @@ namespace fantasyFootball.Controllers
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == name);
-                        if (_nameNode != null)
+                        if (_nameNode == null)
+                        {
+                            myviewmodel.FootBallO = new List<FootBallOModel>();
+                            myviewmodel.FootBallO.Add( new FootBallOModel
+                            {
+                                IsNull = "Sorry No Data For this Player"
+                            });
+                        }
+                        else if (_nameNode != null)
                         {
                             myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
