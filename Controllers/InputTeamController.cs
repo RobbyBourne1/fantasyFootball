@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using fantasyFootball.Data;
 using fantasyFootball.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace fantasyFootball.Controllers
 {
@@ -15,10 +16,13 @@ namespace fantasyFootball.Controllers
     public class InputTeamController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public InputTeamController(ApplicationDbContext context)
+        public InputTeamController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+            
         }
 
         // GET: InputTeam
@@ -63,6 +67,7 @@ namespace fantasyFootball.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = await _userManager.GetUserAsync(HttpContext.User);
                 _context.Add(fantasyTeamModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
