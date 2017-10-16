@@ -18,67 +18,69 @@
 <table id="example" class="table table-striped table-bordered col-sm-10" cellspacing="0" width="100%">
         <caption class=""><strong>Fantasy Outsiders Stats</strong></caption>
         <thead>
+            <h2>Sorry Football Outsiders does not have any data for this player</h2>         
         @foreach(var item in Model.FootBallO)
-        {
-            @if(item.Position == "qb")
-            {
-            <tr>
-                <th>DYAR</th>
-                <th>DYAR Rank</th>
-                <th>QBR</th>
-                <th>QBR Rank</th>
-                <th>Yards</th>
-                <th>Effective Yards</th>
-                <th>TDs</th>
-                <th>INTs</th>
-                <th>FLs</th>
-            </tr>
-            }
-            @if(item.Position == "rb")
-            {
-            <tr>
-                <th>DYAR</th>
-                <th>DYAR Rank</th>
-                <th>Succes Rate</th>
-                <th>Yards</th>
-                <th>Effective Yards</th>
-                <th>TDs</th>
-                <th>FLs</th>
-            </tr>
-            }
-            @if(item.Position == "wr" || item.Position == "te")
-            {
-            <tr>
-                <th>DYAR</th>
-                <th>DYAR Rank</th>
-                <th>Passes</th>
-                <th>Catch Rate</th>
-                <th>Yards</th>
-                <th>Effective Yards</th>
-                <th>TDs</th>
-                <th>FLs</th>
-            </tr>
-            }
-            @if(item.Position == "k")
-            {
-            <tr>
-                <th>FGs/XP Ratio</th>
-            </tr>
-            }
-            @if(item.Position == "def")
-            {
-             <tr>
-                <th>DEF DVOA</th>
-                <th>DEF DVOA Rank</th>
-                <th>DEF DAVE</th>
-                <th>DEF DAVE Rank</th>
-                <th>DEF Pass Rank</th>
-                <th>DEF Rush Rank</th>
-            </tr>   
-            }
+        {       
+                @if(item.Position == "qb")
+                {
+                <tr>
+                    <th>DYAR</th>
+                    <th>DYAR Rank</th>
+                    <th>QBR</th>
+                    <th>QBR Rank</th>
+                    <th>Yards</th>
+                    <th>Effective Yards</th>
+                    <th>TDs</th>
+                    <th>INTs</th>
+                    <th>FLs</th>
+                </tr>
+                }
+                @if(item.Position == "rb")
+                {
+                <tr>
+                    <th>DYAR</th>
+                    <th>DYAR Rank</th>
+                    <th>Succes Rate</th>
+                    <th>Yards</th>
+                    <th>Effective Yards</th>
+                    <th>TDs</th>
+                    <th>FLs</th>
+                </tr>
+                }
+                @if(item.Position == "wr" || item.Position == "te")
+                {
+                <tr>
+                    <th>DYAR</th>
+                    <th>DYAR Rank</th>
+                    <th>Passes</th>
+                    <th>Catch Rate</th>
+                    <th>Yards</th>
+                    <th>Effective Yards</th>
+                    <th>TDs</th>
+                    <th>FLs</th>
+                </tr>
+                }
+                @if(item.Position == "k")
+                {
+                <tr>
+                    <th>FGs/XP Ratio</th>
+                </tr>
+                }
+                @if(item.Position == "def")
+                {
+                <tr>
+                    <th>DEF DVOA</th>
+                    <th>DEF DVOA Rank</th>
+                    <th>DEF DAVE</th>
+                    <th>DEF DAVE Rank</th>
+                    <th>DEF Pass Rank</th>
+                    <th>DEF Rush Rank</th>
+                </tr>   
+                }
         }
         </thead>
         <tbody>
+            <h2>Fantasy Outsiders only rank to 40 in DYAR</h2> 
         @foreach(var item in Model.FootBallO)
         {
             @if(item.Position == "qb")
@@ -198,6 +200,10 @@
                     @Html.DisplayFor(modelItem => item.DEFRushRank)
                 </td>
             </tr>   
+            }
+            @if(item.IsNull = "true")
+            {
+                <h2>Football Outsiders only ranks the top 25 for this position</h2>
             }
         }
         </tbody>

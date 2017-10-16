@@ -54,10 +54,10 @@ namespace fantasyFootball.Controllers
             var FPMdoc = FPMweb.Load(FPMurl);
             var FPMnode = FPMdoc.DocumentNode.SelectSingleNode("//tbody");
 
-            var myviewmodel = new PlayerInfoViewModel();
+            
             if (position == "qb")
             {
-                
+                var myviewmodel = new PlayerInfoViewModel();
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
@@ -81,11 +81,6 @@ namespace fantasyFootball.Controllers
                                 FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
                             });
                             // Code to check Element Placement on Page
-                            // for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            // {
-                            //     Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
-                            // }
-
                         }
                     }
                 }
@@ -101,6 +96,7 @@ namespace fantasyFootball.Controllers
                             myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
+                                IsNull = "false",
                                 Position = position,
                                 DYAR = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DYARRank = nNode.ChildNodes.ElementAt(7).InnerText,
@@ -123,7 +119,7 @@ namespace fantasyFootball.Controllers
             }
             if (position == "rb")
             {
-
+                var myviewmodel = new PlayerInfoViewModel();
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
@@ -145,6 +141,11 @@ namespace fantasyFootball.Controllers
                                 FantasyPoints = nNode.ChildNodes.ElementAt(16).InnerText
                             });
 
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
+                            }
+
                         }
                     }
                 }
@@ -160,6 +161,7 @@ namespace fantasyFootball.Controllers
                             myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
+                                IsNull = "false",
                                 Position = position,
                                 DYAR = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DYARRank = nNode.ChildNodes.ElementAt(7).InnerText,
@@ -171,6 +173,10 @@ namespace fantasyFootball.Controllers
                                 FumblesLost = nNode.ChildNodes.ElementAt(27).InnerText,
                                 SuccessRate = nNode.ChildNodes.ElementAt(29).InnerText
                             });
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i]}:{nNode.ChildNodes[i].InnerText}");
+                            }
                         }
                     }
                 }
@@ -178,7 +184,7 @@ namespace fantasyFootball.Controllers
             }
             if (position == "wr" || position == "te")
             {
-
+                var myviewmodel = new PlayerInfoViewModel();
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
@@ -233,6 +239,7 @@ namespace fantasyFootball.Controllers
                             myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
+                                IsNull = "false",
                                 Position = position,
                                 DYAR = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DYARRank = nNode.ChildNodes.ElementAt(7).InnerText,
@@ -253,6 +260,7 @@ namespace fantasyFootball.Controllers
             }
             if (position == "k")
             {
+                var myviewmodel = new PlayerInfoViewModel();
                 foreach (var nNode in FPnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
@@ -285,6 +293,7 @@ namespace fantasyFootball.Controllers
                             myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
+                                IsNull = "false",
                                 Position = position,
                                 FGXPRatio = nNode.ChildNodes.ElementAt(13).InnerText
                             });
@@ -295,6 +304,7 @@ namespace fantasyFootball.Controllers
             }
             if (position == "def")
             {
+                var myviewmodel = new PlayerInfoViewModel();
                 Console.WriteLine(FPurl);
                 FPName = $"{finitial}{lname}";
                 foreach (var nNode in FPnode.Descendants("tr"))
@@ -329,6 +339,7 @@ namespace fantasyFootball.Controllers
                             myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
+                                IsNull = "false",
                                 Position = position,
                                 DefDVOA = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DefDVOARank = nNode.ChildNodes.ElementAt(7).InnerText,
