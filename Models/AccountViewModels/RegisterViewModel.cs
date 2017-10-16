@@ -8,17 +8,22 @@ namespace fantasyFootball.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required (ErrorMessage="Employee {0} is required")]
+        [StringLength (30,MinimumLength=1,
+        ErrorMessage="Name Should be minimum 1 characters and a maximum of 30 characters")]
+        [DataType(DataType.Text)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
-        [Required]
-        [EmailAddress]
+        [Required (ErrorMessage="Employee {0} is required")]
+        [StringLength (30,MinimumLength=1,
+        ErrorMessage="Name Should be minimum 1 characters and a maximum of 30 characters")]
+        [DataType(DataType.Text)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
-        [Required]
-        [EmailAddress]
+        [Required (ErrorMessage="Employee {0} is required")]
+        [StringLength (20,MinimumLength=5,
+        ErrorMessage="Name Should be minimum 5 characters and a maximum of 20 characters")]
+        [DataType(DataType.Text)]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
