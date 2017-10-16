@@ -63,12 +63,13 @@ namespace fantasyFootball.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TeamName,ApplicationUserId,fantasySite")] FantasyTeamModel fantasyTeamModel)
+        public async Task<IActionResult> Create([Bind("Id,TeamName,fantasySite")] FantasyTeamModel fantasyTeamModel)
         {
             if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(HttpContext.User);
                 var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id).ToList();
+                fantasyTeamModel.ApplicationUserId = user.Id;
                 _context.Add(fantasyTeamModel);
                 // FantasyTeamModel.Add(TeamUser);
                 await _context.SaveChangesAsync();

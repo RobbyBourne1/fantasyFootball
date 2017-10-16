@@ -37,10 +37,8 @@ namespace fantasyFootball.Controllers
             };
 
             var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id).ToList();
-            
-            Console.WriteLine(user.Id);
-            Console.WriteLine(TeamSelect.Count());
-            Console.WriteLine(TeamUser.Count());
+            var players = _context.PlayersModel.Where(w =>  w.FantasyTeamModelId == userTeam);
+            // TODO: Create new VM, that has All teams and all PLayesr for the selected Team
             return View(TeamUser);
         }
         // [HttpGet]
