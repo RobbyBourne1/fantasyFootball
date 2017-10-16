@@ -68,12 +68,17 @@ namespace fantasyFootball.Controllers
             if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(HttpContext.User);
+                var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id).ToList();
                 _context.Add(fantasyTeamModel);
+                // FantasyTeamModel.Add(TeamUser);
                 await _context.SaveChangesAsync();
+                Console.WriteLine(TeamUser);
                 return RedirectToAction(nameof(Index));
+                
             }
             ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id", fantasyTeamModel.ApplicationUserId);
             return RedirectToAction("Create", "PlayersInput");
+            
         }
 
         // GET: InputTeam/Edit/5
