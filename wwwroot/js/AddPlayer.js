@@ -2,8 +2,8 @@
 let playerSearch = document.querySelector('.searchPlayerName')
 let playerForm = document.querySelector('form')
 let input = document.querySelector('input')
-let teamSelect = document.querySelector('.teamID')
 let search = input.value
+let teamSelect = document.querySelector('.teamID')
 let url = "/proxy"
 
 playerSearch.addEventListener('input', event => {
@@ -17,7 +17,7 @@ playerSearch.addEventListener('input', event => {
             })
             let displayOfPlayers = document.querySelector('.playerInfo')
             displayOfPlayers.innerHTML = ''
-            playersFound.slice(0, 15).forEach(function (playerData, index) {
+            playersFound.slice(0, 3).forEach(function (playerData, index) {
 
                 if (playerData.active == 0) {
                     displayOfPlayers.innerHTML += ""
@@ -52,14 +52,16 @@ playerSearch.addEventListener('input', event => {
                         dob : e.target.getAttribute("data-dob"),
                         FantasyTeamModelId : teamSelect.options[teamSelect.selectedIndex].value
                     }
+
+                    console.log('data is', data)
                     // fetch -- post to the create player route
                     fetch("/PlayersInput/Create/", {
                         method: "POST",
                         headers: {
                             'Content-type': 'application/json'
                         },
-                        body: JSON.stringify(data)
-                    }).then(function(res){return res.json()})
+                        body: JSON.stringify(data),
+                    }).then(function(res){ console.log('The result is ', res); return res.json()})
                 })
             })
         });
