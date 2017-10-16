@@ -16,14 +16,20 @@
     <br>
     <br>
 <table id="example" class="table table-striped table-bordered col-sm-10" cellspacing="0" width="100%">
-        <caption class=""><strong>Fantasy Outsiders Stats</strong></caption>
+    @foreach(var item in Model.FootBallO)
+    {
+        @if(item.IsNull)
+        {
+            <caption class=""><strong>Only the top 40 Players are listed on Football Outsiders</strong></caption>
+        }
+        else
+        {
+            <caption class=""><strong>Fantasy Outsiders Stats</strong></caption>
+        }
+    }
         <thead>        
         @foreach(var item in Model.FootBallO)
         {       
-                @if(item.IsNull == "Sorry No Data For this Player")
-                {
-                    <p>No Data For this Player</p>
-                }
                 @if(item.Position == "qb")
                 {
                 <tr>
@@ -85,10 +91,6 @@
         <tbody>
         @foreach(var item in Model.FootBallO)
         {
-            @if(item.IsNull == "Sorry No Data For this Player")
-                {
-                    <p>@Html.DisplayFor(modelItem => item.IsNull)</p>
-                }
             @if(item.Position == "qb")
             {
             <tr>

@@ -24,7 +24,7 @@ namespace fantasyFootball.Controllers
             _context = context;
             _userManager = userManager;
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Index(string userTeam)
         {
             var TeamSelect = new SelectList(_context.FantasyTeams, "Id", "TeamName");
@@ -36,18 +36,20 @@ namespace fantasyFootball.Controllers
                 TeamName = userTeam
             };
 
-            var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id.ToString()).ToList();
+            var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id).ToList();
             
-
+            Console.WriteLine(user.Id);
+            Console.WriteLine(TeamSelect.Count());
+            Console.WriteLine(TeamUser.Count());
             return View(TeamUser);
         }
-        [HttpGet]
-        public async Task<IActionResult> Index()
-        {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
+        // [HttpGet]
+        // public async Task<IActionResult> Index()
+        // {
+        //     var user = await _userManager.GetUserAsync(HttpContext.User);
 
-            var applicationDbContext = _context.FantasyTeams.Include(p => p.ApplicationUser).Where(w => w.ApplicationUserId == user.Id);
-            return View(await applicationDbContext.ToListAsync());
-        }
+        //     var applicationDbContext = _context.FantasyTeams.Include(p => p.ApplicationUser).Where(w => w.ApplicationUserId == user.Id);
+        //     return View(await applicationDbContext.ToListAsync());
+        // }
     }
 }

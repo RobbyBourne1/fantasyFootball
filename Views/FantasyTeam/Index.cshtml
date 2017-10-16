@@ -1,3 +1,4 @@
+@model IEnumerable<fantasyFootball.Models.FantasyTeamModel>
 
 
 <div class="container">
@@ -33,22 +34,14 @@
                 <th>Salary</th>
             </tr>
         </thead>
-        <tfoot>
-        @foreach(var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.TeamName)</td>
-            </tr>
-        }
-        </tfoot>
         <tbody>
             <tr>
-                <td><a asp-area="" asp-controller="PlayerInfo" asp-action="Index">Tiger Nixon</a></td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.TeamName)</td>
+                </tr>
+            }
             </tr>
         </tbody>
 </table>

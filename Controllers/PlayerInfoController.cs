@@ -91,21 +91,11 @@ namespace fantasyFootball.Controllers
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == name);
-                        if (_nameNode == null)
+                        if (_nameNode != null)
                         {
-                            myviewmodel.FootBallO = new List<FootBallOModel>();
-                            myviewmodel.FootBallO.Add( new FootBallOModel
-                            {
-                                IsNull = "Sorry No Data For this Player"
-                            });
-                        }
-                        else if (_nameNode != null)
-                        {
-                            myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
-                                IsNull = "false",
-                                Position = position,
+                               Position = position,
                                 DYAR = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DYARRank = nNode.ChildNodes.ElementAt(7).InnerText,
                                 DVOA = nNode.ChildNodes.ElementAt(13).InnerText,
@@ -135,7 +125,6 @@ namespace fantasyFootball.Controllers
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText.Replace(" ", "") == FPName);
                         if (_nameNode != null)
                         {
-                            myviewmodel.FantasyPros = new List<FantasyProsModel>();
                             myviewmodel.FantasyPros.Add(new FantasyProsModel
                             {
                                 Position = position,
@@ -166,10 +155,8 @@ namespace fantasyFootball.Controllers
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == name);
                         if (_nameNode != null)
                         {
-                            myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
-                                IsNull = "false",
                                 Position = position,
                                 DYAR = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DYARRank = nNode.ChildNodes.ElementAt(7).InnerText,
@@ -202,7 +189,6 @@ namespace fantasyFootball.Controllers
                         {
                             if (position == "wr")
                             {
-                                myviewmodel.FantasyPros = new List<FantasyProsModel>();
                                 myviewmodel.FantasyPros.Add(new FantasyProsModel
                                 {
                                     Position = position,
@@ -220,7 +206,6 @@ namespace fantasyFootball.Controllers
 
                             if (position == "te")
                             {
-                                myviewmodel.FantasyPros = new List<FantasyProsModel>();
                                 myviewmodel.FantasyPros.Add(new FantasyProsModel
                                 {
                                     Position = position,
@@ -244,11 +229,9 @@ namespace fantasyFootball.Controllers
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == name);
                         if (_nameNode != null)
                         {
-                            myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
-                                IsNull = "false",
-                                Position = position,
+                               Position = position,
                                 DYAR = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DYARRank = nNode.ChildNodes.ElementAt(7).InnerText,
                                 DVOA = nNode.ChildNodes.ElementAt(13).InnerText,
@@ -276,7 +259,6 @@ namespace fantasyFootball.Controllers
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText.Replace(" ", "") == FPName);
                         if (_nameNode != null)
                         {
-                            myviewmodel.FantasyPros = new List<FantasyProsModel>();
                             myviewmodel.FantasyPros.Add(new FantasyProsModel
                             {
                                 Position = position,
@@ -298,10 +280,8 @@ namespace fantasyFootball.Controllers
                         Console.WriteLine(_teamNode);
                         if (_teamNode != null)
                         {
-                            myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
-                                IsNull = "false",
                                 Position = position,
                                 FGXPRatio = nNode.ChildNodes.ElementAt(13).InnerText
                             });
@@ -322,7 +302,6 @@ namespace fantasyFootball.Controllers
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText.Replace(" ", "") == FPName);
                         if (_nameNode != null)
                         {
-                            myviewmodel.FantasyPros = new List<FantasyProsModel>();
                             myviewmodel.FantasyPros.Add(new FantasyProsModel
                             {
                                 Position = position,
@@ -344,10 +323,8 @@ namespace fantasyFootball.Controllers
                         var _teamNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == team);
                         if (_teamNode != null)
                         {
-                            myviewmodel.FootBallO = new List<FootBallOModel>();
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
-                                IsNull = "false",
                                 Position = position,
                                 DefDVOA = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DefDVOARank = nNode.ChildNodes.ElementAt(7).InnerText,

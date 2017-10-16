@@ -6,7 +6,7 @@ namespace fantasyFootball.Models
 {
     public class FootBallOModel
     {
-        public string IsNull { get; set; }
+        public bool IsNull { get; set; } = false;
         public string Position { get; set; }
         public string DYAR { get; set; }
         public string DYARRank { get; set; }
@@ -29,9 +29,6 @@ namespace fantasyFootball.Models
         public string Passes { get; set; }
         public string CatchRate { get; set; }
         public string FGXPRatio { get; set; }
-        public FootBallOModel()
-        {
-            this.IsNull = "true";
-        }
+
     }
 }
