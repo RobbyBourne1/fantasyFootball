@@ -22,7 +22,8 @@ namespace fantasyFootball.Controllers
         }
         public IActionResult Index()
         {
-            new SelectList(_context.FantasyTeams, "Id", "TeamName");
+            var TeamSelect = new SelectList(_context.FantasyTeams, "Id", "TeamName");
+           
             return View();
         }
     }

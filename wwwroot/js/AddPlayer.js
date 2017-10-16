@@ -2,6 +2,7 @@
 let playerSearch = document.querySelector('.searchPlayerName')
 let playerForm = document.querySelector('form')
 let input = document.querySelector('input')
+let teamSelect = document.querySelector('.teamID')
 let search = input.value
 let url = "/proxy"
 
