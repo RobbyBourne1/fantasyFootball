@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace fantasyFootball.Controllers
 {
-    
+    [Authorize]
     public class FantasyTeamController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,7 +20,6 @@ namespace fantasyFootball.Controllers
         {
             _context = context;
         }
-        [Authorize]
         public IActionResult Index()
         {
             new SelectList(_context.FantasyTeams, "Id", "TeamName");
