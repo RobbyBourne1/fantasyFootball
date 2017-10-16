@@ -32,8 +32,8 @@
     background: url('/images/WhoDoIStart.png') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    background-size: cover;
     -o-background-size: cover;
+    background-size: contain
   }
 
 /* Hide/rearrange for smaller screens */
