@@ -18,7 +18,6 @@
 <table id="example" class="table table-striped table-bordered col-sm-10" cellspacing="0" width="100%">
         <caption class=""><strong>Fantasy Outsiders Stats</strong></caption>
         <thead>
-            <h2>Sorry Football Outsiders does not have any data for this player</h2>         
         @foreach(var item in Model.FootBallO)
         {       
                 @if(item.Position == "qb")
@@ -77,12 +76,19 @@
                     <th>DEF Rush Rank</th>
                 </tr>   
                 }
+                 @if(item.IsNull == "true")
+                {
+                    <h2>Football Outsiders does not have any data for this player</h2>
+                }
         }
         </thead>
         <tbody>
-            <h2>Fantasy Outsiders only rank to 40 in DYAR</h2> 
         @foreach(var item in Model.FootBallO)
         {
+            @if(item.IsNull == "true")
+            {
+                <h2>Football Outsiders only ranks the top 25 for this position</h2>
+            }
             @if(item.Position == "qb")
             {
             <tr>
@@ -200,10 +206,6 @@
                     @Html.DisplayFor(modelItem => item.DEFRushRank)
                 </td>
             </tr>   
-            }
-            @if(item.IsNull = "true")
-            {
-                <h2>Football Outsiders only ranks the top 25 for this position</h2>
             }
         }
         </tbody>
