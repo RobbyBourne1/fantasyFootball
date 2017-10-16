@@ -4,29 +4,36 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
-
-<h4>FantasyTeamModel</h4>
+<h2>Add Team</h2>
+<br>
+<h4>Add All Of Your Fantasy Teams Here</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="TeamName" class="control-label"></label>
+                <label asp-for="TeamName" class="control-label">Team Name</label>
                 <input asp-for="TeamName" class="form-control" />
                 <span asp-validation-for="TeamName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="fantasySite" class="control-label"></label>
+                <label asp-for="fantasySite" class="control-label">Fantasy Site</label>
                 <input asp-for="fantasySite" class="form-control" />
-                <span asp-validation-for="fantasySite" class="text-danger"></span>
+                <span  class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
+        
     </div>
+        <div class="col-sm-4 col-sm-offset-1 text-center">
+        <h3>Already Have A Team? Add Players Here</h3>
+          <a asp-controller="PlayersInput" asp-action="Create">
+            <button class="btn btn-primary btn-lg btn-block col-sm-6">Add Players</button>
+          </a>
+        </div>
 </div>
 
 <div>
