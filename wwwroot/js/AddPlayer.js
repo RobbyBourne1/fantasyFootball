@@ -53,15 +53,15 @@ playerSearch.addEventListener('input', event => {
                         FantasyTeamModelId : teamSelect.options[teamSelect.selectedIndex].value
                     }
 
-                    console.log('data is', data)
                     // fetch -- post to the create player route
                     fetch("/PlayersInput/Create/", {
                         method: "POST",
+                        credentials: "same-origin",
                         headers: {
                             'Content-type': 'application/json'
                         },
                         body: JSON.stringify(data),
-                    }).then(function(res){ console.log('The result is ', res); return res.json()})
+                    }).then(function(res){return res.json()})
                 })
             })
         });
