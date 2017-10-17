@@ -7,6 +7,7 @@ namespace fantasyFootball.Models
     public class PlayersModel
     {
         public string Id { get; set; }
+        public int JsonId { get; set; }
         public string FantasyTeamModelId { get; set; }
         public FantasyTeamModel FantasyTeamModel { get; set; }
         public string active { get; set; }

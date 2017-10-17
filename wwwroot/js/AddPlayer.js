@@ -50,6 +50,7 @@ playerSearch.addEventListener('input', event => {
                         active : e.target.getAttribute("data-active"),
                         college : e.target.getAttribute("data-college"),
                         dob : e.target.getAttribute("data-dob"),
+                        JsonId : e.target.getAttribute("data-Id"),
                         FantasyTeamModelId : teamSelect.options[teamSelect.selectedIndex].value
                     }
 
