@@ -1,4 +1,4 @@
-@model IEnumerable<fantasyFootball.Models.FantasyTeamModel>
+@model fantasyFootball.Models.PlayerTeamViewModel
 
 
 <div class="container">
@@ -11,7 +11,7 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1">
-        @foreach(var item in Model)
+        @foreach(var item in Model.FantasyTeam)
             {
                 <li>
                     <a asp-action="FantasyTeam" asp-route-id=@item.Id>@item.TeamName</a>
@@ -19,10 +19,6 @@
             }
   </ul>
 </div>
-    <!-- <div class="form-group">
-        <label asp-for="TeamSelect" class="control-label"></label>
-        <select asp-for="TeamSelect" class ="form-control teamID" asp-items="TeamSelect.Id"></select>
-    </div> -->
 <br>
 <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
@@ -34,14 +30,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-            @foreach(var item in Model)
+            @foreach(var item in Model.FantasyPlayers)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.TeamName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.displayName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.position)</td>
+                    <td>@Html.DisplayFor(modelItem => item.team)</td>
+                    <td><a href="">Remove Player</a></td>
                 </tr>
             }
-            </tr>
         </tbody>
 </table>
     <div class="row">

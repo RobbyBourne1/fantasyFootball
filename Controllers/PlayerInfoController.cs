@@ -95,7 +95,7 @@ namespace fantasyFootball.Controllers
                         {
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
-                               Position = position,
+                                Position = position,
                                 DYAR = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DYARRank = nNode.ChildNodes.ElementAt(7).InnerText,
                                 DVOA = nNode.ChildNodes.ElementAt(13).InnerText,

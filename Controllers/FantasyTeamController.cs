@@ -31,15 +31,23 @@ namespace fantasyFootball.Controllers
 
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
-            var userTeams = new FantasyTeamModel()
-            {
-                TeamName = userTeam
-            };
 
             var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id).ToList();
-            var players = _context.PlayersModel.Where(w =>  w.FantasyTeamModelId == userTeam);
-            // TODO: Create new VM, that has All teams and all PLayesr for the selected Team
-            return View(TeamUser);
+            var players = _context.PlayersModel.Where(w =>  w.FantasyTeamModelId == userTeam).ToList();
+
+            var playerTeamViewModel = new PlayerTeamViewModel();
+            playerTeamViewModel.FantasyPlayers.Add(new PlayersModel
+            {
+                FantasyTeamModelId = userTeam
+            });
+            playerTeamViewModel.FantasyTeam.Add(new FantasyTeamModel 
+            {
+                Players = players
+            });
+
+
+            // TODO: Create new VM, that has All teams and all PLayers for the selected Team
+            return View(playerTeamViewModel);
         }
         // [HttpGet]
         // public async Task<IActionResult> Index()
