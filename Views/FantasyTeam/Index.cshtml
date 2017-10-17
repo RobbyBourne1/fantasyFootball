@@ -36,7 +36,7 @@
                     <td>@Html.DisplayFor(modelItem => item.displayName)</td>
                     <td>@Html.DisplayFor(modelItem => item.position)</td>
                     <td>@Html.DisplayFor(modelItem => item.team)</td>
-                    <td><a href="">Remove Player</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@item.Id">Remove Player</a></td>
                 </tr>
             }
         </tbody>
