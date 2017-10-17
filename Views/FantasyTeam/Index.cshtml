@@ -3,20 +3,23 @@
 
 <div class="container">
 
-<h1 class="text-center">Your Fantasy Football Team(s)</h1>
+<h1 class="text-center">Your Fantasy Football Team</h1>
 <br>
 <div class="dropdown row justify-content-center">
-  <button class="btn btn-default dropdown-toggle col-sm-10 col-sm-offset-1" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <button class="form-control input-lg" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Fantasy Teams
     <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu col-sm-12" aria-labelledby="dropdownMenu1">
+  <ul class="dropdown-menu col-sm-12 dropdown-text" aria-labelledby="dropdownMenu1">
+      <li role="separator" class="divider"></li>
         @foreach(var item in Model.FantasyTeam)
             {
                 <li>
                     <a asp-route-userTeam=@item.Id>@item.TeamName</a>
                 </li>
+                <li role="separator" class="divider"></li>
             }
+        <li role="separator" class="divider"></li>
   </ul>
 </div>
 <br>

@@ -36,8 +36,13 @@
     background-size: contain
   }
 
-#navbar-brand {
-    background-image: url("images/refereewhite.png")
+.dropdown-text {
+    text-align: center;
+}
+
+.dropdown-menu>li>a {
+    font-weight: 600;
+    text-transform: capitalize;
 }
 
 /* Hide/rearrange for smaller screens */
