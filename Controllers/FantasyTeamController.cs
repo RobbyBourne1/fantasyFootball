@@ -25,29 +25,23 @@ namespace fantasyFootball.Controllers
             _userManager = userManager;
         }
         [HttpGet]
-        public async Task<IActionResult> Index(string userTeam)
+        [Route("FantasyTeam/Index/{userTeam}")]
+        public async Task<IActionResult> Index([FromRoute]string userTeam)
         {
             var TeamSelect = new SelectList(_context.FantasyTeams, "Id", "TeamName");
-
             var user = await _userManager.GetUserAsync(HttpContext.User);
-
+           
+            if (userTeam == "all"){
+                userTeam = _context.FantasyTeams.FirstOrDefault(f => f.ApplicationUserId == user.Id).Id;
+            }
 
             var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id).ToList();
             var players = _context.PlayersModel.Where(w =>  w.FantasyTeamModelId == userTeam).ToList();
 
-            var playerTeamViewModel = new PlayerTeamViewModel();
-            playerTeamViewModel.FantasyPlayers.Add(new PlayersModel
-            {
-                FantasyTeamModelId = TeamUser.ToString()
-
-            });
-            Console.WriteLine(TeamUser.ToString());
-            playerTeamViewModel.FantasyTeam.Add(new FantasyTeamModel 
-            {
-                Players = players
-            });
-            Console.WriteLine(players.ToString());
-
+            var playerTeamViewModel = new PlayerTeamViewModel{
+                FantasyPlayers = players,
+                FantasyTeam = TeamUser
+            };
             // TODO: Create new VM, that has All teams and all PLayers for the selected Team
             return View(playerTeamViewModel);
         }

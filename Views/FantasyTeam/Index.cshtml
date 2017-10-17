@@ -14,7 +14,7 @@
         @foreach(var item in Model.FantasyTeam)
             {
                 <li>
-                    <a asp-action="FantasyTeam" asp-route-id=@item.Id>@item.TeamName</a>
+                    <a asp-route-userTeam=@item.Id>@item.TeamName</a>
                 </li>
             }
   </ul>
@@ -36,7 +36,7 @@
                     <td>@Html.DisplayFor(modelItem => item.displayName)</td>
                     <td>@Html.DisplayFor(modelItem => item.position)</td>
                     <td>@Html.DisplayFor(modelItem => item.team)</td>
-                    <td><a asp-action="Delete" asp-route-id="@item.Id">Remove Player</a></td>
+                    <td><a asp-controller="PlayerInput" asp-action="Delete" asp-route-id="@item.Id">Remove Player</a></td>
                 </tr>
             }
         </tbody>

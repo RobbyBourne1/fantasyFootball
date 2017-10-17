@@ -61,7 +61,9 @@ playerSearch.addEventListener('input', event => {
                             'Content-type': 'application/json'
                         },
                         body: JSON.stringify(data),
-                    }).then(function(res){return res.json()})
+                    }).then(function(res){return res.json()}).then(() => {
+                        window.location = "/FantasyTeam/Index/all"
+                    })
                 })
             })
         });
