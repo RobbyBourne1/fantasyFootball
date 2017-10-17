@@ -32,13 +32,13 @@ namespace fantasyFootball.Controllers
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
 
-            var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id);
-            var players = _context.PlayersModel.Where(w =>  w.FantasyTeamModelId == userTeam);
+            var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id).ToList();
+            var players = _context.PlayersModel.Where(w =>  w.FantasyTeamModelId == userTeam).ToList();
 
             var playerTeamViewModel = new PlayerTeamViewModel();
             playerTeamViewModel.FantasyPlayers.Add(new PlayersModel
             {
-                FantasyTeamModelId = TeamUser
+                FantasyTeamModelId = TeamUser.ToString()
 
             });
             Console.WriteLine(TeamUser.ToString());
