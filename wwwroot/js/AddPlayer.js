@@ -32,7 +32,7 @@ playerSearch.addEventListener('input', event => {
                             <dt>Player Team</dt>
                             <dd>${playerData.team}</dd>
                         </dl>
-                        <button type="button" value="Create" class="btn btn-default col-sm-2 add-button" data-displayName="${playerData.displayName}" data-position="${playerData.position}" data-team="${playerData.team}" data-fname="${playerData.fname}" data-lname="${playerData.lname}" data-team="${playerData.team}" data-jersey="${playerData.jersey}" data-active="${playerData.active}" data-college="${playerData.college}" data-dob="${playerData.dob}">Add</button>
+                        <button type="button" value="Create" class="btn btn-default col-sm-2 add-button" data-displayName="${playerData.displayName}" data-position="${playerData.position}" data-team="${playerData.team}" data-fname="${playerData.fname}" data-lname="${playerData.lname}" data-team="${playerData.team}" data-jersey="${playerData.jersey}" data-active="${playerData.active}" data-college="${playerData.college}" data-dob="${playerData.dob}" data-playerId="${playerData.playerId}"">Add</button>
                       </div>
                     `;
                 }
@@ -50,7 +50,7 @@ playerSearch.addEventListener('input', event => {
                         active : e.target.getAttribute("data-active"),
                         college : e.target.getAttribute("data-college"),
                         dob : e.target.getAttribute("data-dob"),
-                        JsonId : e.target.getAttribute("data-Id"),
+                        JsonId : e.target.getAttribute("data-playerId"),
                         FantasyTeamModelId : teamSelect.options[teamSelect.selectedIndex].value
                     }
 

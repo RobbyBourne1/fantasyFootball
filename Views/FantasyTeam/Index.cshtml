@@ -34,7 +34,7 @@
             {
                 <tr>
                     @{
-                        var _url = $"/playerinfo/index/?finitial=${item.fname}&lname=${item.lname}&team=${item.team}&position=${item.position}";
+                        var _url = $"/playerinfo/index/{item.JsonId}?finitial={item.fname}&lname={item.lname}&team={item.team}&position={item.position}";
                     }
                     <td><a href="@_url">@Html.DisplayFor(modelItem => item.displayName)</a></td>
                     <td>@Html.DisplayFor(modelItem => item.position)</td>
