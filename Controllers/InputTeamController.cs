@@ -74,7 +74,7 @@ namespace fantasyFootball.Controllers
                 // FantasyTeamModel.Add(TeamUser);
                 await _context.SaveChangesAsync();
                 Console.WriteLine(TeamUser);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "PlayersInput");
                 
             }
             ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id", fantasyTeamModel.ApplicationUserId);
