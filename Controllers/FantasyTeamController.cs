@@ -31,7 +31,8 @@ namespace fantasyFootball.Controllers
             var TeamSelect = new SelectList(_context.FantasyTeams, "Id", "TeamName");
             var user = await _userManager.GetUserAsync(HttpContext.User);
            
-            if (userTeam == "all"){
+            if (userTeam == "all")
+            {
                 userTeam = _context.FantasyTeams.FirstOrDefault(f => f.ApplicationUserId == user.Id).Id;
             }
 
