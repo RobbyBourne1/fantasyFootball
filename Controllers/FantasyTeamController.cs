@@ -31,11 +31,6 @@ namespace fantasyFootball.Controllers
             var TeamSelect = new SelectList(_context.FantasyTeams, "Id", "TeamName");
             var user = await _userManager.GetUserAsync(HttpContext.User);
            
-            if (userTeam == "all")
-            {
-                userTeam = _context.FantasyTeams.FirstOrDefault(f => f.ApplicationUserId == user.Id).Id;
-            }
-
             var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id).ToList();
             var players = _context.PlayersModel.Where(w =>  w.FantasyTeamModelId == userTeam).ToList();
 
@@ -43,16 +38,27 @@ namespace fantasyFootball.Controllers
                 FantasyPlayers = players,
                 FantasyTeam = TeamUser
             };
+
+            if (userTeam == "all")
+            {
+                try
+                {
+                    userTeam = _context.FantasyTeams.FirstOrDefault(f => f.ApplicationUserId == user.Id).Id;
+                }
+                catch (System.Exception)
+                {
+                    
+                    return View(nameof(Sorry));
+                }
+                
+            }
+
             // TODO: Create new VM, that has All teams and all PLayers for the selected Team
             return View(playerTeamViewModel);
         }
-        // [HttpGet]
-        // public async Task<IActionResult> Index()
-        // {
-        //     var user = await _userManager.GetUserAsync(HttpContext.User);
-
-        //     var applicationDbContext = _context.FantasyTeams.Include(p => p.ApplicationUser).Where(w => w.ApplicationUserId == user.Id);
-        //     return View(await applicationDbContext.ToListAsync());
-        // }
+        public IActionResult Sorry()
+        {
+            return View();
+        }
     }
 }
