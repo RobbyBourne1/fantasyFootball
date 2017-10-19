@@ -53,7 +53,6 @@ namespace fantasyFootball.Controllers
                 
             }
 
-            // TODO: Create new VM, that has All teams and all PLayers for the selected Team
             return View(playerTeamViewModel);
         }
         public IActionResult Sorry()

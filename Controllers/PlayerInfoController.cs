@@ -55,7 +55,7 @@ namespace fantasyFootball.Controllers
             var FPMnode = FPMdoc.DocumentNode.SelectSingleNode("//tbody");
 
             
-            if (position == "qb")
+            if (position == "qb") 
             {
                 var myviewmodel = new PlayerInfoViewModel();
                 foreach (var nNode in FPnode.Descendants("tr"))
@@ -222,6 +222,11 @@ namespace fantasyFootball.Controllers
                 }
                 finitial = finitial.First().ToString();
                 var name = $"{finitial}.{lname}";
+                if (lname == "Green")
+                {
+                    name = "A.J.Green";
+                }
+                Console.WriteLine(name);
                 foreach (var nNode in FOnode.Descendants("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
