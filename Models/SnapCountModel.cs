@@ -24,6 +24,8 @@ namespace fantasyFootball.Models
         public string Week15 { get; set; }
         public string Week16 { get; set; }
         public string Week17 { get; set; }
+        public string AvgSCs { get; set; }
+        public string TotalSC { get; set; }
 
     }
 }
