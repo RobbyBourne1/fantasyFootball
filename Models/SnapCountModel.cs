@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace fantasyFootball.Models
 {
-    public class MatchupScheduleModel
+    public class SnapCountModel
     {
         public string Position { get; set; }
         public string Week1 { get; set; }
