@@ -44,18 +44,49 @@ namespace fantasyFootball.Controllers
             var FPdoc = FPweb.Load(FPurl);
             var FPnode = FPdoc.DocumentNode.SelectSingleNode("//table/tbody");
 
-            var FPMurl = $"https://www.fantasypros.com/nfl/matchups/{pos}.php";
-            if (pos == "def")
-            {
-               FPMurl = "https://www.fantasypros.com/nfl/matchups/dst.php";
-            }
+            var FPMurl = $"https://www.fantasypros.com/nfl/reports/snap-counts/";
 
             var FPMweb = new HtmlWeb();
             var FPMdoc = FPMweb.Load(FPMurl);
-            var FPMnode = FPMdoc.DocumentNode.SelectSingleNode("//tbody");
+            var FPMnode = FPMdoc.DocumentNode.SelectSingleNode("//table");
 
-            
-            if (position == "qb") 
+            var snapName = $"{finitial.ToString()} {lname.ToString()}";
+            // Console.WriteLine(snapName);
+            foreach (var nNode in FPMnode.DescendantsAndSelf("tr"))
+            {
+                var myviewmodel = new PlayerInfoViewModel();
+                if (nNode.NodeType == HtmlNodeType.Element)
+                {   
+                     for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                    {
+                        Console.WriteLine($"{i}:{nNode.ChildNodes[i].InnerText}");
+                    }
+                    var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == snapName);
+                    Console.WriteLine(snapName);
+                    if (_nameNode != null)
+                    {
+                        Console.WriteLine(snapName);
+                        // myviewmodel.FantasyPros = new List<FantasyProsModel>();
+                        // myviewmodel.FantasyPros.Add(new FantasyProsModel
+                        // {
+                        //     Position = position,
+                        //     // PassCMP = nNode.ChildNodes.ElementAt(4).InnerText,
+                        //     // PassYards = nNode.ChildNodes.ElementAt(6).InnerText,
+                        //     // PassAtt = nNode.ChildNodes.ElementAt(2).InnerText,
+                        //     // PassINTs = nNode.ChildNodes.ElementAt(8).InnerText,
+                        //     // PassTDs = nNode.ChildNodes.ElementAt(10).InnerText,
+                        //     // RushAtt = nNode.ChildNodes.ElementAt(12).InnerText,
+                        //     // RushYards = nNode.ChildNodes.ElementAt(14).InnerText,
+                        //     // RushTDs = nNode.ChildNodes.ElementAt(16).InnerText,
+                        //     // FumblesLost = nNode.ChildNodes.ElementAt(18).InnerText,
+                        //     // FantasyPoints = nNode.ChildNodes.ElementAt(20).InnerText
+                        // });
+                        // Code to check Element Placement on Page
+                    }
+                }
+            }
+
+            if (position == "qb")
             {
                 var myviewmodel = new PlayerInfoViewModel();
                 foreach (var nNode in FPnode.Descendants("tr"))
@@ -236,7 +267,7 @@ namespace fantasyFootball.Controllers
                         {
                             myviewmodel.FootBallO.Add(new FootBallOModel
                             {
-                               Position = position,
+                                Position = position,
                                 DYAR = nNode.ChildNodes.ElementAt(5).InnerText,
                                 DYARRank = nNode.ChildNodes.ElementAt(7).InnerText,
                                 DVOA = nNode.ChildNodes.ElementAt(13).InnerText,
