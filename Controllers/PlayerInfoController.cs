@@ -43,11 +43,57 @@ namespace fantasyFootball.Controllers
             var FPdoc = FPweb.Load(FPurl);
             var FPnode = FPdoc.DocumentNode.SelectSingleNode("//table/tbody");
 
-            var FPMurl = $"https://www.fantasypros.com/nfl/reports/snap-counts/";
+            var FPSCurl = $"https://www.fantasypros.com/nfl/reports/snap-counts/";
+            var FPSCweb = new HtmlWeb();
+            var FPSCdoc = FPSCweb.Load(FPSCurl);
+            var FPSCnode = FPSCdoc.DocumentNode.SelectSingleNode("//table");
 
-            var FPMweb = new HtmlWeb();
-            var FPMdoc = FPMweb.Load(FPMurl);
-            var FPMnode = FPMdoc.DocumentNode.SelectSingleNode("//table");
+            var FPTarURL = $"https://www.fantasypros.com/nfl/reports/targets/";
+            var FPTarweb = new HtmlWeb();
+            var FPTardoc = FPTarweb.Load(FPTarURL);
+            var FPTarnode = FPTardoc.DocumentNode.SelectSingleNode("//table");
+
+            var snapName = $"{finitial.ToString()} {lname.ToString()} ";
+                foreach (var nNode in FPTarnode.DescendantsAndSelf("tr"))
+                {   
+                    var myviewmodel = new PlayerInfoViewModel();
+
+                    if (nNode.NodeType == HtmlNodeType.Element)
+                    {
+                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == snapName);
+                        if (_nameNode != null)
+                        {
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i].InnerText}");
+                            }
+                            myviewmodel.Targets = new List<TargetsModel>();
+                            myviewmodel.Targets.Add(new TargetsModel
+                            {
+                                Position = position,
+                                Week1 = nNode.ChildNodes.ElementAt(3).InnerText,
+                                Week2 = nNode.ChildNodes.ElementAt(4).InnerText,
+                                Week3 = nNode.ChildNodes.ElementAt(5).InnerText,
+                                Week4 = nNode.ChildNodes.ElementAt(6).InnerText,
+                                Week5 = nNode.ChildNodes.ElementAt(7).InnerText,
+                                Week6 = nNode.ChildNodes.ElementAt(8).InnerText,
+                                Week7 = nNode.ChildNodes.ElementAt(9).InnerText,
+                                Week8 = nNode.ChildNodes.ElementAt(10).InnerText,
+                                Week9 = nNode.ChildNodes.ElementAt(11).InnerText,
+                                Week10 = nNode.ChildNodes.ElementAt(12).InnerText,
+                                Week11 = nNode.ChildNodes.ElementAt(13).InnerText,
+                                Week12 = nNode.ChildNodes.ElementAt(14).InnerText,
+                                Week13 = nNode.ChildNodes.ElementAt(15).InnerText,
+                                Week14 = nNode.ChildNodes.ElementAt(16).InnerText,
+                                Week15 = nNode.ChildNodes.ElementAt(17).InnerText,
+                                Week16 = nNode.ChildNodes.ElementAt(18).InnerText,
+                                Week17 = nNode.ChildNodes.ElementAt(19).InnerText,
+                                TotalSC = nNode.ChildNodes.ElementAt(20).InnerText,
+                                AvgSCs = nNode.ChildNodes.ElementAt(21).InnerText
+                            });
+                        }
+                    }
+                }
 
             if (position == "qb")
             {
@@ -82,13 +128,12 @@ namespace fantasyFootball.Controllers
                         }
                     }
                 }
-                var snapName = $"{finitial.ToString()} {lname.ToString()} ";
-                foreach (var nNode in FPMnode.DescendantsAndSelf("tr"))
+                // var snapName = $"{finitial.ToString()} {lname.ToString()} ";
+                foreach (var nNode in FPSCnode.DescendantsAndSelf("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == snapName);
-                        // Console.WriteLine(snapName);
                         if (_nameNode != null)
                         {
                             myviewmodel.SnapCounts = new List<SnapCountModel>();
@@ -174,8 +219,8 @@ namespace fantasyFootball.Controllers
                         }
                     }
                 }
-                var snapName = $"{finitial.ToString()} {lname.ToString()} ";
-                foreach (var nNode in FPMnode.DescendantsAndSelf("tr"))
+                // var snapName = $"{finitial.ToString()} {lname.ToString()} ";
+                foreach (var nNode in FPSCnode.DescendantsAndSelf("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
@@ -280,8 +325,8 @@ namespace fantasyFootball.Controllers
                         }
                     }
                 }
-                var snapName = $"{finitial.ToString()} {lname.ToString()} ";
-                foreach (var nNode in FPMnode.DescendantsAndSelf("tr"))
+                // var snapName = $"{finitial.ToString()} {lname.ToString()} ";
+                foreach (var nNode in FPSCnode.DescendantsAndSelf("tr"))
                 {
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
