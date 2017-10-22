@@ -408,13 +408,14 @@
         </tbody>
 </table>
 <table id="example" class="table table-striped table-bordered col-sm-10" cellspacing="0" width="100%">
-        <caption class=""><strong>Snap Counts By Week</strong></caption>
+        <caption class=""><strong>Activity</strong></caption>
         <thead>
         @foreach(var item in Model.SnapCounts)
         {
             @if(item.Position != "k" || item.Position != "def")
             {
             <tr>
+                <th>Weeks</th>
                 @if(item.Week1 != "&nbsp;")
                 {
                     <th>1</th>
@@ -493,6 +494,7 @@
         @foreach(var item in Model.SnapCounts)
         {
             <tr>
+                <td><strong>Snap Counts</strong></td>
                 @if(item.Week1 != "&nbsp;")
                 {
                     <td>
@@ -599,7 +601,10 @@
         }
         @foreach(var item in Model.Targets)
         {
+            @if(item.Position == "rb" || item.Position == "wr" || item.Position == "te")
+            {
             <tr>
+                <td><strong>Receiving Targets</strong></td>
                 @if(item.Week1 != "&nbsp;")
                 {
                     <td>
@@ -703,6 +708,7 @@
                     @Html.DisplayFor(modelItem => item.AvgSCs)
                 </td>
             </tr>
+            }
         }
         </tbody>
 </table>

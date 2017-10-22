@@ -215,7 +215,6 @@ namespace fantasyFootball.Controllers
                 }
                 foreach (var nNode in FPTarnode.DescendantsAndSelf("tr"))
                 {
-
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == snapName);
@@ -354,7 +353,44 @@ namespace fantasyFootball.Controllers
                                 TotalSC = nNode.ChildNodes.ElementAt(20).InnerText,
                                 AvgSCs = nNode.ChildNodes.ElementAt(21).InnerText
                             });
-                            // Code to check Element Placement on Page
+                        }
+                    }
+                }
+                foreach (var nNode in FPTarnode.DescendantsAndSelf("tr"))
+                {
+                    if (nNode.NodeType == HtmlNodeType.Element)
+                    {
+                        var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == snapName);
+                        if (_nameNode != null)
+                        {
+                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
+                            {
+                                Console.WriteLine($"{i}:{nNode.ChildNodes[i].InnerText}");
+                            }
+                            myviewmodel.Targets = new List<TargetsModel>();
+                            myviewmodel.Targets.Add(new TargetsModel
+                            {
+                                Position = position,
+                                Week1 = nNode.ChildNodes.ElementAt(3).InnerText,
+                                Week2 = nNode.ChildNodes.ElementAt(4).InnerText,
+                                Week3 = nNode.ChildNodes.ElementAt(5).InnerText,
+                                Week4 = nNode.ChildNodes.ElementAt(6).InnerText,
+                                Week5 = nNode.ChildNodes.ElementAt(7).InnerText,
+                                Week6 = nNode.ChildNodes.ElementAt(8).InnerText,
+                                Week7 = nNode.ChildNodes.ElementAt(9).InnerText,
+                                Week8 = nNode.ChildNodes.ElementAt(10).InnerText,
+                                Week9 = nNode.ChildNodes.ElementAt(11).InnerText,
+                                Week10 = nNode.ChildNodes.ElementAt(12).InnerText,
+                                Week11 = nNode.ChildNodes.ElementAt(13).InnerText,
+                                Week12 = nNode.ChildNodes.ElementAt(14).InnerText,
+                                Week13 = nNode.ChildNodes.ElementAt(15).InnerText,
+                                Week14 = nNode.ChildNodes.ElementAt(16).InnerText,
+                                Week15 = nNode.ChildNodes.ElementAt(17).InnerText,
+                                Week16 = nNode.ChildNodes.ElementAt(18).InnerText,
+                                Week17 = nNode.ChildNodes.ElementAt(19).InnerText,
+                                TotalSC = nNode.ChildNodes.ElementAt(20).InnerText,
+                                AvgSCs = nNode.ChildNodes.ElementAt(21).InnerText
+                            });
                         }
                     }
                 }
