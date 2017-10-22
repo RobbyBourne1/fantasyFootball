@@ -597,6 +597,113 @@
                 </td>
             </tr>
         }
+        @foreach(var item in Model.Targets)
+        {
+            <tr>
+                @if(item.Week1 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week1)
+                    </td>
+                }
+                @if(item.Week2 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week2)
+                    </td>
+                }
+                @if(item.Week3 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week3)
+                    </td>
+                }
+                @if(item.Week4 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week4)
+                    </td>
+                }
+                @if(item.Week5 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week5)
+                    </td>
+                }
+                @if(item.Week6 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week6)
+                    </td>
+                }
+                @if(item.Week7 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week7)
+                    </td>
+                }
+                @if(item.Week8 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week8)
+                    </td>
+                }
+                @if(item.Week9 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week9)
+                    </td>
+                }
+                @if(item.Week10 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week10)
+                    </td>
+                }
+                @if(item.Week11 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week12)
+                    </td>
+                }
+                @if(item.Week13 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week13)
+                    </td>
+                }
+                @if(item.Week14 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week14)
+                    </td>
+                }
+                @if(item.Week15 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week15)
+                    </td>
+                }
+                @if(item.Week16 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week16)
+                    </td>
+                }
+                @if(item.Week17 != "&nbsp;")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week17)
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalSC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvgSCs)
+                </td>
+            </tr>
+        }
         </tbody>
 </table>
 <footer>
