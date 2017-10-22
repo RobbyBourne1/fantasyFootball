@@ -183,7 +183,6 @@ namespace fantasyFootball.Controllers
                     if (nNode.NodeType == HtmlNodeType.Element)
                     {
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == snapName);
-                        // Console.WriteLine(snapName);
                         if (_nameNode != null)
                         {
                             myviewmodel.SnapCounts = new List<SnapCountModel>();
@@ -220,10 +219,6 @@ namespace fantasyFootball.Controllers
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == snapName);
                         if (_nameNode != null)
                         {
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i].InnerText}");
-                            }
                             myviewmodel.Targets = new List<TargetsModel>();
                             myviewmodel.Targets.Add(new TargetsModel
                             {
@@ -363,10 +358,6 @@ namespace fantasyFootball.Controllers
                         var _nameNode = nNode.ChildNodes.FirstOrDefault(n => n.InnerText == snapName);
                         if (_nameNode != null)
                         {
-                            for (var i = 0; i < nNode.ChildNodes.Count(); i++)
-                            {
-                                Console.WriteLine($"{i}:{nNode.ChildNodes[i].InnerText}");
-                            }
                             myviewmodel.Targets = new List<TargetsModel>();
                             myviewmodel.Targets.Add(new TargetsModel
                             {
