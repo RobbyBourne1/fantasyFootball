@@ -5,14 +5,15 @@ let allPlayerSearch = document.querySelector('.searchAllPlayerName')
 let url = "/proxy"
 
 allPlayerSearch.addEventListener('input', event => {
-    const _userInput = event.target.value
+    const _userInput = event.target.value.toLowerCase()
+    console.log(_userInput)
 
-let allPlayerInfo = fetch(url).then(response => response.json())
-    .then(data => {
-        let playersFound = data.Players.filter(player => {
-            return player.displayName.indexOf(_userInput) >= 0;
-        })
-        let displayOfPlayers = document.querySelector('.allPlayerBody')
+    let allPlayerInfo = fetch(url).then(response => response.json())
+        .then(data => {
+            let playersFound = data.Players.filter(player => {
+                return player.displayName.toLowerCase().indexOf(_userInput) >= 0;
+            })
+            let displayOfPlayers = document.querySelector('.allPlayerBody')
             displayOfPlayers.innerHTML = ''
             playersFound.slice(0, 45).forEach(function (playerData, index) {
 
@@ -26,8 +27,8 @@ let allPlayerInfo = fetch(url).then(response => response.json())
                         <td>${playerData.team}</td>
                         <td><a href="/playersinput/create">Add Player</a></td>
                     </tr>
-                  `; 
-                }  
+                  `;
+                }
             })
-    })
+        })
 })

@@ -7,13 +7,13 @@ let teamSelect = document.querySelector('.teamID')
 let url = "/proxy"
 
 playerSearch.addEventListener('input', event => {
-    const _userInput = event.target.value
+    const _userInput = event.target.value.toLowerCase()
 
     let playerInfo = fetch(url).then(response => response.json())
         .then(data => {
             console.log(data)
             let playersFound = data.Players.filter(player => {
-                return player.displayName.indexOf(_userInput) >= 0;
+                return player.displayName.toLowerCase().indexOf(_userInput) >= 0;
             })
             let displayOfPlayers = document.querySelector('.playerInfo')
             displayOfPlayers.innerHTML = ''
