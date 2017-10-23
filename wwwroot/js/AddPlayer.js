@@ -17,7 +17,7 @@ playerSearch.addEventListener('input', event => {
             })
             let displayOfPlayers = document.querySelector('.playerInfo')
             displayOfPlayers.innerHTML = ''
-            playersFound.slice(0, 3).forEach(function (playerData, index) {
+            playersFound.slice(0, 10).forEach(function (playerData, index) {
 
                 if (playerData.active == 0) {
                     displayOfPlayers.innerHTML += ""
