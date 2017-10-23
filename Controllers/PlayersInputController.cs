@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using fantasyFootball.Data;
 using fantasyFootball.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace fantasyFootball.Controllers
 {
@@ -15,10 +16,12 @@ namespace fantasyFootball.Controllers
     public class PlayersInputController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public PlayersInputController(ApplicationDbContext context)
+        public PlayersInputController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: PlayersInput
@@ -48,10 +51,14 @@ namespace fantasyFootball.Controllers
         }
 
         // GET: PlayersInput/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["FantasyTeamModelId"] = new SelectList(_context.FantasyTeams, "Id", "TeamName");
-            return View();
+            
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var TeamUser = _context.FantasyTeams.Where(w => w.ApplicationUserId == user.Id).ToList();
+
+            ViewData["FantasyTeamModelId"] = new SelectList(TeamUser, "Id", "TeamName");
+            return View(); 
         }
 
         // POST: PlayersInput/Create
